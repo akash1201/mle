@@ -15,10 +15,14 @@ import AddVendor from './screens/AddVendor';
 import GenerateBill from './VendorScreens/GenerateBill';
 import AddMember from './AdminScreens/AddMembers';
 import UserManagement from './screens/UserManagement';
+import { useEffect } from 'react';
 
 
 
 function App() {
+  useEffect(()=>{
+    console.log('Here');
+  },[])
   return (
     <Router>
       <div>

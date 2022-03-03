@@ -28,7 +28,7 @@ function App() {
       <div>
               
                     <Routes>
-                      <Route path='/' element={<Home/>}/>
+                      <Route path='/' element={<Home/>}>
                       <Route index element={<Home/>}/>
                       <Route path='login' element={<LoginScreen/>}/>
                       <Route path='generate-rpin'element={<GenerateRpin/>}/>
@@ -40,6 +40,7 @@ function App() {
                       <Route path='add-vendor' element={<AddVendor />}/>
                       <Route path='generate-bill' element={<GenerateBill />}/>
                       <Route path='users' element={<UserManagement />}/>
+                      </Route>
                     </Routes>
           {/* </div> */}
       </div>

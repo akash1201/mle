@@ -2,8 +2,7 @@ import 'antd/dist/antd.css';
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
-  Link
+  Routes
 } from "react-router-dom";
 import LoginScreen from './screens/LoginScreen';
 import GenerateRpin from './screens/GenerateRpin';
@@ -25,17 +24,17 @@ function App() {
       <div>
               
                     <Routes>
-                      <Route path={"/"} exact element={<Home/>}/>
-                      <Route path={'/login'} exact element={<LoginScreen/>}/>
-                      <Route path={'/generate-rpin'} exact element={<GenerateRpin/>}/>
-                      <Route path={'/my-dashboard'} exact element={<MyDashboard/>}/>
-                      <Route path={'/add-downline'} exact element={<AddDownline/>}/>
-                      <Route path={'/membership-benefits'} exact element={<CashBack />} />
-                      <Route path={'/vendor-management'} exact element={<VendorManagement />} />
-                      <Router path={'/add-members'} exact element={<AddMember/>}/>
-                      <Route path={`/add-vendor`} exact element={<AddVendor />}/>
-                      <Route path={'/generate-bill'} exact element={<GenerateBill />}/>
-                      <Route path={`/users`} exact element={<UserManagement />}/>
+                      <Route path="/" exact element={<Home/>}/>
+                      <Route path='/login' exact element={<LoginScreen/>}/>
+                      <Route path='/generate-rpin' exact element={<GenerateRpin/>}/>
+                      <Route path='/my-dashboard' exact element={<MyDashboard/>}/>
+                      <Route path='/add-downline' exact element={<AddDownline/>}/>
+                      <Route path='/membership-benefits' exact element={<CashBack />} />
+                      <Route path='/vendor-management' exact element={<VendorManagement />} />
+                      <Router path='/add-members' exact element={<AddMember/>}/>
+                      <Route path='/add-vendor' exact element={<AddVendor />}/>
+                      <Route path='/generate-bill' exact element={<GenerateBill />}/>
+                      <Route path='/users' exact element={<UserManagement />}/>
                     </Routes>
           {/* </div> */}
       </div>

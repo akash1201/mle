@@ -24,17 +24,17 @@ function App() {
       <div>
               
                     <Routes>
-                      <Route path="/" exact element={<Home/>}/>
-                      <Route path='/login' exact element={<LoginScreen/>}/>
-                      <Route path='/generate-rpin' exact element={<GenerateRpin/>}/>
-                      <Route path='/my-dashboard' exact element={<MyDashboard/>}/>
-                      <Route path='/add-downline' exact element={<AddDownline/>}/>
-                      <Route path='/membership-benefits' exact element={<CashBack />} />
-                      <Route path='/vendor-management' exact element={<VendorManagement />} />
-                      <Router path='/add-members' exact element={<AddMember/>}/>
-                      <Route path='/add-vendor' exact element={<AddVendor />}/>
-                      <Route path='/generate-bill' exact element={<GenerateBill />}/>
-                      <Route path='/users' exact element={<UserManagement />}/>
+                      <Route index  element={<Home/>}/>
+                      <Route path='/login' element={<LoginScreen/>}/>
+                      <Route path='/generate-rpin'element={<GenerateRpin/>}/>
+                      <Route path='/my-dashboard' element={<MyDashboard/>}/>
+                      <Route path='/add-downline' element={<AddDownline/>}/>
+                      <Route path='/membership-benefits' element={<CashBack />} />
+                      <Route path='/vendor-management' element={<VendorManagement />} />
+                      <Router path='/add-members' element={<AddMember/>}/>
+                      <Route path='/add-vendor' element={<AddVendor />}/>
+                      <Route path='/generate-bill' element={<GenerateBill />}/>
+                      <Route path='/users' element={<UserManagement />}/>
                     </Routes>
           {/* </div> */}
       </div>

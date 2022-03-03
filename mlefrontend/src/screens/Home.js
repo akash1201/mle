@@ -33,17 +33,20 @@ const Home = () => {
           //   console.log(res.data.user)
             if(res.status == 200){
                  let user = res.data.user
+                 if(user.line1){
+                    setName(user.name)
+                    setUid(user.userId)
+                    setRpin(user.rPin? user.rPin : '')
+                    setDesignation(user.designation)
+                    setPhoneNo(user.phone)
+                    setLine1(user.address.line1)
+                    setCity(user.address.city)
+                    setDist(user.address.district)
+                    setState(user.address.state)
+                    setPin(user.address.pin)
+                 }
 
-                 setName(user.name)
-                 setUid(user.userId)
-                 setRpin(user.rPin? user.rPin : '')
-                 setDesignation(user.designation)
-                 setPhoneNo(user.phone)
-                 setLine1(user.address.line1)
-                 setCity(user.address.city)
-                 setDist(user.address.district)
-                 setState(user.address.state)
-                 setPin(user.address.pin)
+                 
                  setLoading(false)
             }
          })
@@ -79,9 +82,9 @@ return (    <>
                            loading?
                            <Row style={{marginLeft : '537px', paddingTop : '150px'}}>
                            <svg>
-                            <circle cx="50" cy="50" r="40" stroke="red" stroke-dasharray="78.5 235.5" stroke-width="3" fill="none" />
-                            <circle cx="50" cy="50" r="30" stroke="blue" stroke-dasharray="62.8 188.8" stroke-width="3" fill="none" />
-                            <circle cx="50" cy="50" r="20" stroke="green" stroke-dasharray="47.1 141.3" stroke-width="3" fill="none" />
+                            <circle cx="50" cy="50" r="40" stroke="red" strokeDasharray="78.5 235.5" strokeWidth="3" fill="none" />
+                            <circle cx="50" cy="50" r="30" stroke="blue" strokeDasharray="62.8 188.8" strokeWidth="3" fill="none" />
+                            <circle cx="50" cy="50" r="20" stroke="green" strokeDasharray="47.1 141.3" strokeWidth="3" fill="none" />
                             </svg>
                            </Row>
                            :

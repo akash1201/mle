@@ -24,7 +24,8 @@ function App() {
       <div>
               
                     <Routes>
-                      <Route index  element={<Home/>}/>
+                      <Route path='/' element={<Home/>}/>
+                      <Route index element={<Home/>}/>
                       <Route path='login' element={<LoginScreen/>}/>
                       <Route path='generate-rpin'element={<GenerateRpin/>}/>
                       <Route path='my-dashboard' element={<MyDashboard/>}/>

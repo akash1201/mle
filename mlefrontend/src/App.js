@@ -1,3 +1,4 @@
+import React,{ useEffect } from 'react';
 import 'antd/dist/antd.css';
 import {
   BrowserRouter as Router,
@@ -15,7 +16,6 @@ import AddVendor from './screens/AddVendor';
 import GenerateBill from './VendorScreens/GenerateBill';
 import AddMember from './AdminScreens/AddMembers';
 import UserManagement from './screens/UserManagement';
-import { useEffect } from 'react';
 
 
 

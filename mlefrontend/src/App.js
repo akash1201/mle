@@ -25,16 +25,16 @@ function App() {
               
                     <Routes>
                       <Route index  element={<Home/>}/>
-                      <Route path='/login' element={<LoginScreen/>}/>
-                      <Route path='/generate-rpin'element={<GenerateRpin/>}/>
-                      <Route path='/my-dashboard' element={<MyDashboard/>}/>
-                      <Route path='/add-downline' element={<AddDownline/>}/>
-                      <Route path='/membership-benefits' element={<CashBack />} />
-                      <Route path='/vendor-management' element={<VendorManagement />} />
-                      <Router path='/add-members' element={<AddMember/>}/>
-                      <Route path='/add-vendor' element={<AddVendor />}/>
-                      <Route path='/generate-bill' element={<GenerateBill />}/>
-                      <Route path='/users' element={<UserManagement />}/>
+                      <Route path='login' element={<LoginScreen/>}/>
+                      <Route path='generate-rpin'element={<GenerateRpin/>}/>
+                      <Route path='my-dashboard' element={<MyDashboard/>}/>
+                      <Route path='add-downline' element={<AddDownline/>}/>
+                      <Route path='membership-benefits' element={<CashBack />} />
+                      <Route path='vendor-management' element={<VendorManagement />} />
+                      <Router path='add-members' element={<AddMember/>}/>
+                      <Route path='add-vendor' element={<AddVendor />}/>
+                      <Route path='generate-bill' element={<GenerateBill />}/>
+                      <Route path='users' element={<UserManagement />}/>
                     </Routes>
           {/* </div> */}
       </div>

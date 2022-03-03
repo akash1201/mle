@@ -26,9 +26,7 @@ function App() {
   return (
     <Router>
       <div>
-              
-              <Route path='/' component={Home} />
-                    {/* <Routes>
+                    <Routes>
                       <Route path='/' element={<Home/>}>
                       <Route index element={<Home/>}/>
                       <Route path='login' element={<LoginScreen/>}/>
@@ -42,7 +40,7 @@ function App() {
                       <Route path='generate-bill' element={<GenerateBill />}/>
                       <Route path='users' element={<UserManagement />}/>
                       </Route>
-                    </Routes> */}
+                    </Routes>
           {/* </div> */}
       </div>
     </Router>

@@ -24,7 +24,7 @@ function App() {
     console.log('Here');
   },[])
   return (
-    <Router basename='/mlefrontend'>
+    <Router basename='/'>
       <div>
                     <Routes>
                       <Route path='/' element={<Home/>}>

@@ -9,6 +9,8 @@ import SideAnalysisData from '../components/SideAnalysisData'
 
 const MyDashboard = () => {
 
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
     const [tableData, setTableData] = useState(()=>[])
     const [loading, setLoading] = useState(()=>true)
     useEffect(()=>{
@@ -50,7 +52,7 @@ const MyDashboard = () => {
       ];
           return (
                     <>
-                       <Sider/>
+                       {userInfo && <Sider/>}
                 <div className="all-content-wrapper">
                     <Header />
                     <TopAnalysisData />

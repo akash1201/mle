@@ -51,7 +51,7 @@ const VendorManagement = () => {
         ];
 
 return (    <>
-          <Sider/>
+          {userInfo && <Sider/>}
    <div className="all-content-wrapper">
        <Header />
        <TopAnalysisData />

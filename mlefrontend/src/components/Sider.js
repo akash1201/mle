@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 const Sider = () => {
@@ -6,6 +6,12 @@ const Sider = () => {
     let navigate = useNavigate()
 
     let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
+    useEffect(()=>{
+        if(!userInfo){
+            navigate('/login');
+        }
+    }, [])
 
     const sidebar = [
         {
@@ -97,7 +103,7 @@ const Sider = () => {
                 <nav className="sidebar-nav left-sidebar-menu-pro">
                     <ul className="metismenu" id="menu1">
                         { 
-                            userInfo.userType == 'admin'?
+                           userInfo && userInfo.userType == 'admin'?
                             sidebar.filter(e=>e.admin).map((e, i)=>(
                                         <li className="active" key={i}>
                                         <Link to={e.path}>

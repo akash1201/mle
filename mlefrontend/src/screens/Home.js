@@ -6,10 +6,14 @@ import SideAnalysisData from '../components/SideAnalysisData'
 import TopAnalysisData from '../components/TopAnalysisData'
 import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import { getUserProfile } from '../ApiCalls/UserAuth'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
 
     // required states
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
+    let navigate = useNavigate();
 
     const [uid, setUid] = useState(()=>'')
     const [name, setName] = useState(()=>'')
@@ -27,39 +31,43 @@ const Home = () => {
 
 
     useState(()=>{
-        
-         getUserProfile()
-         .then(res=>{
-          //   console.log(res.data.user)
-            if(res.status == 200){
-                 let user = res.data.user
-                 if(user.line1){
-                    setName(user.name)
-                    setUid(user.userId)
-                    setRpin(user.rPin? user.rPin : '')
-                    setDesignation(user.designation)
-                    setPhoneNo(user.phone)
-                    setLine1(user.address.line1)
-                    setCity(user.address.city)
-                    setDist(user.address.district)
-                    setState(user.address.state)
-                    setPin(user.address.pin)
-                 }
+        console.log(userInfo)
+       if(userInfo){
+        getUserProfile()
+        .then(res=>{
+         //   console.log(res.data.user)
+           if(res.status == 200){
+                let user = res.data.user
+                if(user.line1){
+                   setName(user.name)
+                   setUid(user.userId)
+                   setRpin(user.rPin? user.rPin : '')
+                   setDesignation(user.designation)
+                   setPhoneNo(user.phone)
+                   setLine1(user.address.line1)
+                   setCity(user.address.city)
+                   setDist(user.address.district)
+                   setState(user.address.state)
+                   setPin(user.address.pin)
+                }
 
-                 
-                 setLoading(false)
-            }
-         })
-         .catch(err=>{
-                   setLoading(false)
-                   console.log(err)
-         })
+                
+                setLoading(false)
+           }
+        })
+        .catch(err=>{
+                  setLoading(false)
+                  console.log(err)
+        })
+       }else{
+           navigate('/login')
+       }
 
     }, [])
 
 
 return (    <>
-          <Sider/>
+         {userInfo && <Sider/>}
    <div className="all-content-wrapper">
        <Header />
        <TopAnalysisData />

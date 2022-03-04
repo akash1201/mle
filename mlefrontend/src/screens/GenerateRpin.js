@@ -83,7 +83,7 @@ const GenerateRpin = () => {
 
           return (
                     <>
-                     <Sider/>
+                     {userInfo && <Sider/>}
                    <div className="all-content-wrapper">
                        <Header />
                        <div className="color-line"></div>

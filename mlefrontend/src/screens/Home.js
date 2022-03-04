@@ -60,7 +60,9 @@ const Home = () => {
                   console.log(err)
         })
        }else{
-           navigate('/login')
+        //    console.log('Navigate will work')
+        //    navigate('/login',{replace : true})
+        document.location.href='/login'
        }
 
     }, [])

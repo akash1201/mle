@@ -1,10 +1,10 @@
 import React,{ useEffect } from 'react';
 import 'antd/dist/antd.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Routes,
+// } from "react-router-dom";
 import LoginScreen from './screens/LoginScreen';
 import GenerateRpin from './screens/GenerateRpin';
 import MyDashboard from './screens/MyDashboard';
@@ -24,22 +24,25 @@ function App() {
     console.log('Here');
   },[])
   return (
-    <Router>
-                    <Routes>
-                      <Route path='/' element={<Home />}/>
-                      {/* <Route index component={Home}/> */}
-                      <Route path='/login' element={<LoginScreen />}/>
-                      <Route path='generate-rpin'element={<GenerateRpin/>}/>
-                      <Route path='my-dashboard' element={<MyDashboard/>}/>
-                      <Route path='add-downline' element={<AddDownline/>}/>
-                      <Route path='membership-benefits' element={<CashBack />} />
-                      <Route path='vendor-management' element={<VendorManagement />} />
-                      <Router path='add-members' element={<AddMember/>}/>
-                      <Route path='add-vendor' element={<AddVendor />}/>
-                      <Route path='generate-bill' element={<GenerateBill />}/>
-                      <Route path='users' element={<UserManagement />}/>
-                    </Routes>
-    </Router>
+    <div>
+       <h1>Hii Welcome to JLE Mega Mart</h1>
+    </div>
+    // <Router>
+    //                 <Routes>
+    //                   <Route path='/' element={<Home />}/>
+    //                   {/* <Route index component={Home}/> */}
+    //                   <Route path='/login' element={<LoginScreen />}/>
+    //                   <Route path='generate-rpin'element={<GenerateRpin/>}/>
+    //                   <Route path='my-dashboard' element={<MyDashboard/>}/>
+    //                   <Route path='add-downline' element={<AddDownline/>}/>
+    //                   <Route path='membership-benefits' element={<CashBack />} />
+    //                   <Route path='vendor-management' element={<VendorManagement />} />
+    //                   <Router path='add-members' element={<AddMember/>}/>
+    //                   <Route path='add-vendor' element={<AddVendor />}/>
+    //                   <Route path='generate-bill' element={<GenerateBill />}/>
+    //                   <Route path='users' element={<UserManagement />}/>
+    //                 </Routes>
+    // </Router>
   );
 }
 

@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import {
   BrowserRouter as Router,
   Route,
-  Routes
+  Routes,
 } from "react-router-dom";
 import LoginScreen from './screens/LoginScreen';
 import GenerateRpin from './screens/GenerateRpin';
@@ -24,7 +24,7 @@ function App() {
     console.log('Here');
   },[])
   return (
-    <Router>
+    <Router basename='/mlefrontend'>
       <div>
                     <Routes>
                       <Route path='/' element={<Home/>}>

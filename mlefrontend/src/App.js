@@ -25,7 +25,6 @@ function App() {
   },[])
   return (
     <Router basename='/'>
-      <div>
                     <Routes>
                       <Route path='/' element={<Home/>}>
                       <Route index element={<Home/>}/>
@@ -41,8 +40,6 @@ function App() {
                       <Route path='users' element={<UserManagement />}/>
                       </Route>
                     </Routes>
-          {/* </div> */}
-      </div>
     </Router>
   );
 }

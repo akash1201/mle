@@ -7,6 +7,7 @@ import TopAnalysisData from '../components/TopAnalysisData'
 import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import { getUserProfile } from '../ApiCalls/UserAuth'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../components/Loading'
 
 const Home = () => {
 
@@ -49,9 +50,7 @@ const Home = () => {
                    setDist(user.address.district)
                    setState(user.address.state)
                    setPin(user.address.pin)
-                }
-
-                
+                }   
                 setLoading(false)
            }
         })
@@ -90,13 +89,7 @@ return (    <>
                <div style={{backgroundColor : 'white'}}>
                  {
                            loading?
-                           <Row style={{marginLeft : '537px', paddingTop : '150px'}}>
-                           <svg>
-                            <circle cx="50" cy="50" r="40" stroke="red" strokeDasharray="78.5 235.5" strokeWidth="3" fill="none" />
-                            <circle cx="50" cy="50" r="30" stroke="blue" strokeDasharray="62.8 188.8" strokeWidth="3" fill="none" />
-                            <circle cx="50" cy="50" r="20" stroke="green" strokeDasharray="47.1 141.3" strokeWidth="3" fill="none" />
-                            </svg>
-                           </Row>
+                           <Loading />
                            :
                            <Container style={{paddingTop : '2%'}}>
                             

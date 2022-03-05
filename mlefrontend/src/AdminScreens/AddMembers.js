@@ -7,6 +7,7 @@ import TopAnalysisData from '../components/TopAnalysisData'
 import { getAllRpins, registerUser, addUser } from '../ApiCalls/UserAuth'
 import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
+import Loading from '../components/Loading';
 
 const AddMember = () => {
 
@@ -30,6 +31,8 @@ const AddMember = () => {
       
           const [error, setError] = useState(()=>'')
           const [success, setSuccess] = useState(()=>false)
+
+          const [loading, setLoading] = useState(()=>false)
 
           const errorAndClear = (msg) => {
             setError(msg);
@@ -94,29 +97,41 @@ const AddMember = () => {
                          account : accountNo,
                          ifsc : ifsc     
                      }
+                     setLoading(true)
                      addUser(data)
                      .then((e)=>{
-                         console.log(e)
-                         setName('')
-                         setPhoneNo('')
-                         setLine1('')
-                         setCity('')
-                         setDist('')
-                         setState('')
-                         setPin('')
-                         setPassword('')
-                         setCpassword('')
-                         setAccountNo('')
-                         setIfsc('')
-            
-                         setSuccess(true);
-                         setTimeout(()=>{
-                             setSuccess(false)
-                         }, 3500)
-                         navigate('/users')
+                         console.log(e);
+                         console.log(e.response);
+                         if(e.status == 400){
+                            setLoading(false);
+                            setError(e.data.message);
+                            setTimeout(()=>{
+                                setError('')
+                            },3500);
+                         }else{
+                            setName('')
+                            setPhoneNo('')
+                            setLine1('')
+                            setCity('')
+                            setDist('')
+                            setState('')
+                            setPin('')
+                            setPassword('')
+                            setCpassword('')
+                            setAccountNo('')
+                            setIfsc('')
+               
+                            setSuccess(true);
+                            setTimeout(()=>{
+                                setSuccess(false)
+                            }, 3500)
+                            setLoading(false)
+                            navigate('/users')
+                         }
                      })
                      .catch(err=>{
                          console.log(err)
+                         setLoading(false)
                          setError(err.message)
                          setTimeout(()=>{
                              setError('')
@@ -145,125 +160,131 @@ return (
                    </div>
                </div>
                <div  style={{backgroundColor : 'white'}}>
-                   <Container style={{paddingTop : '2%'}}>
-                   {error && <div class="row">
-                                    <div class="col">
-                                        <div role="alert" class="alert alert-danger show">{error}</div>
-                                    </div>
-                              </div>}
-
-                              {
-                               success && <div class="row">
-                                  <div class="col">
-                                      <div role="alert" class="alert alert-primary show">{'User Added'}</div>
-                                  </div>
-                                </div>
-                              }
-                             <Row>
-                                       <Col md={6}>
+                  {
+                      loading?
+                      <Loading />
+                      :
+                      <Container style={{paddingTop : '2%'}}>
+                      {error && <div className="row">
+                                       <div className="col">
+                                           <div role="alert" className="alert alert-danger show">{error}</div>
+                                       </div>
+                                 </div>}
+   
+                                 {
+                                  success && <div className="row">
+                                     <div className="col">
+                                         <div role="alert" className="alert alert-primary show">{'User Added'}</div>
+                                     </div>
+                                   </div>
+                                 }
+                                <Row>
+                                          <Col md={6}>
+                                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                     <Form.Label>Full Name</Form.Label>
+                                                     <Form.Control value={name} onChange={(e)=>{setName(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                          <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Full Name</Form.Label>
-                                                  <Form.Control value={name} onChange={(e)=>{setName(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                                       <Col md={6}>
-                                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Phone No.</Form.Label>
-                                                  <Form.Control value={phoneNo} onChange={e=>{setPhoneNo(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                             </Row>
-
-                             <Row>
-                                       <Col md={6}>
+                                                     <Form.Label>Phone No.</Form.Label>
+                                                     <Form.Control value={phoneNo} onChange={e=>{setPhoneNo(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                </Row>
+   
+                                <Row>
+                                          <Col md={6}>
+                                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                     <Form.Label>Address(Line 1)</Form.Label>
+                                                     <Form.Control value={line1} onChange={e=>{setLine1(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                          <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Address(Line 1)</Form.Label>
-                                                  <Form.Control value={line1} onChange={e=>{setLine1(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                                       <Col md={6}>
-                                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>City/Town</Form.Label>
-                                                  <Form.Control value={city} onChange={e=>{setCity(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                             </Row>
-                             
-                             <Row>
-                                       <Col md={6}>
+                                                     <Form.Label>City/Town</Form.Label>
+                                                     <Form.Control value={city} onChange={e=>{setCity(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                </Row>
+                                
+                                <Row>
+                                          <Col md={6}>
+                                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                     <Form.Label>District</Form.Label>
+                                                     <Form.Control value={dist} onChange={e=>{setDist(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                          <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>District</Form.Label>
-                                                  <Form.Control value={dist} onChange={e=>{setDist(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                                       <Col md={6}>
-                                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>State</Form.Label>
-                                                  <Form.Control value={state} onChange={e=>{setState(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                             </Row>
-
-                             <Row>
-                                       <Col md={6}>
-                                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Pin Code</Form.Label>
-                                                  <Form.Control value={pin} onChange={e=>{setPin(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                                       <Col md={6}>
+                                                     <Form.Label>State</Form.Label>
+                                                     <Form.Control value={state} onChange={e=>{setState(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                </Row>
+   
+                                <Row>
+                                          <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>User Id</Form.Label>
-                                                  <Form.Control value={userId} onChange={e=>{setUserId(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                                  
-                                           </Form.Group>
-                                       </Col>
-                             </Row>
-
-                             <Row>
-                                       <Col md={6}>
+                                                     <Form.Label>Pin Code</Form.Label>
+                                                     <Form.Control value={pin} onChange={e=>{setPin(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                          <Col md={6}>
+                                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                     <Form.Label>User Id</Form.Label>
+                                                     <Form.Control value={userId} onChange={e=>{setUserId(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                                     
+                                              </Form.Group>
+                                          </Col>
+                                </Row>
+   
+                                <Row>
+                                          <Col md={6}>
+                                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                     <Form.Label>Passoword</Form.Label>
+                                                     <Form.Control value={password} onChange={e=>{setPassword(e.target.value)}} type="password" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                          <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Passoword</Form.Label>
-                                                  <Form.Control value={password} onChange={e=>{setPassword(e.target.value)}} type="password" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                                       <Col md={6}>
-                                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Confirm Passoword</Form.Label>
-                                                  <Form.Control value={cpassword} onChange={e=>{setCpassword(e.target.value)}} type="password" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                             </Row>
-
-                             <Row>
-                                       <Col md={6}>
+                                                     <Form.Label>Confirm Passoword</Form.Label>
+                                                     <Form.Control value={cpassword} onChange={e=>{setCpassword(e.target.value)}} type="password" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                </Row>
+   
+                                <Row>
+                                          <Col md={6}>
+                                             <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                     <Form.Label>Account No</Form.Label>
+                                                     <Form.Control value={accountNo} onChange={e=>{setAccountNo(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                          <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>Account No</Form.Label>
-                                                  <Form.Control value={accountNo} onChange={e=>{setAccountNo(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                                       <Col md={6}>
-                                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                  <Form.Label>IFSC</Form.Label>
-                                                  <Form.Control value={ifsc} onChange={e=>{setIfsc(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
-                                           </Form.Group>
-                                       </Col>
-                             </Row>
-
-                             <Row style={{marginBottom : '2%'}}>
-                                       <Col>
-                                         
-                                       </Col>
-                                       <Col>
-                                       <Button variant="primary" onClick={submitHandler}>
-                                        Submit
-                                        </Button>
-                                       </Col>
-                                       <Col>
-                                       
-                                       </Col>
-                             </Row>
-                   </Container>
+                                                     <Form.Label>IFSC</Form.Label>
+                                                     <Form.Control value={ifsc} onChange={e=>{setIfsc(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                              </Form.Group>
+                                          </Col>
+                                </Row>
+   
+                                <Row style={{marginBottom : '2%'}}>
+                                          <Col>
+                                            
+                                          </Col>
+                                          <Col>
+                                          <Button variant="primary" onClick={submitHandler}>
+                                           Submit
+                                           </Button>
+                                          </Col>
+                                          <Col>
+                                          
+                                          </Col>
+                                </Row>
+                      </Container>
+                  
+                  }
                </div>
            </div>
        </div>

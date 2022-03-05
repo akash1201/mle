@@ -17,6 +17,7 @@ const UserSchema = mongoose.Schema({
           },
           userId : {
                  type : String,
+                 unique : true
           },
           password: {
                     type: String,

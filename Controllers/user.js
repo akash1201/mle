@@ -262,6 +262,11 @@ const generateBill = asyncHandler ( async (req, res)=>{
 
 const addUser = asyncHandler (async (req, res)=>{
 
+    let user = await User.findOne({userId : req.body.userId})
+   if(user){
+       res.status(400).json({message : 'User Id in use'})
+      
+   }else{
     let rpin = uuidv4();
 
     let max = await User.aggregate([
@@ -321,15 +326,10 @@ const addUser = asyncHandler (async (req, res)=>{
              contactId : contactId,
              fundId : data1.id
    }
-
-    // let obj = {
-    //     slNo : slno,
-    //     rPin : rpin,
-    //     ...req.body
-    // }
    
     let user = await User.create(obj);
     res.json(user);
+   }
 })
 
 const getUsers = asyncHandler ( async (req, res)=>{

@@ -53,7 +53,7 @@ const Header = () => {
 											</div>
 											<div className="breadcomb-ctn">
 												<h2>Dashboard</h2>
-												<p>Welcome to Jai Lakshmi Enterprise <span className="bread-ntd">Dashboard</span></p>
+												<p>Welcome to JLE <span className="bread-ntd">Dashboard</span></p>
 											</div>
 										</div>
                                     </div>

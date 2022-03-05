@@ -90,7 +90,10 @@ const Sider = () => {
                       <div className="left-sidebar-pro">
                          <nav id="sidebar" className="">
                               <div className="sidebar-header">
-                                        <a href={'/'}><img className="main-logo" src="img/logo/logo.png" alt="" /></a>
+                                        <a href={'/'}>
+                                            {/* <h4 style={{color : 'white'}}>JLE</h4> */}
+                                            {/* <img className="main-logo" src="img/logo/logo.png" alt="" /> */}
+                                        </a>
                                         <strong><img src="img/user-img-1.png" alt="" /></strong>
                               </div>
 			<div className="nalika-profile">

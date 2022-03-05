@@ -157,7 +157,7 @@ const getVendors = async () => {
      }
 
    try{
-     let response = await axios.get(`${BASE_URL}/users/get-vendors`, config)
+     let response = await axios.get(`/users/get-vendors`, config)
      return response.data
    }catch(err){
         return err.response
@@ -173,7 +173,7 @@ const getUsers = async () => {
      }
 
    try{
-     let response = await axios.get(`${BASE_URL}/users/get-users`, config)
+     let response = await axios.get(`/users/get-users`, config)
      return response.data
    }catch(err){
         return err.response

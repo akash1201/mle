@@ -50,10 +50,10 @@ return (
                </div>
                <div style={{backgroundColor : 'white'}}>
                <Container style={{paddingTop : '2%'}}>
-                         <Row>
+                         {/* <Row>
                              <Col><h2>Membership Benefits</h2></Col>
-                         </Row>
-                         <Row>
+                         </Row> */}
+                         {/* <Row>
                          <Col>
                              <Table striped bordered hover variant="dark">
                                  <thead>
@@ -81,7 +81,7 @@ return (
                                  </tbody>
                              </Table>
                           </Col>
-                        </Row>
+                        </Row> */}
                 </Container>
                 {
                       incomes.length != 0?

@@ -39,7 +39,8 @@ const Home = () => {
          //   console.log(res.data.user)
            if(res.status == 200){
                 let user = res.data.user
-                if(user.line1){
+                // console.log()
+                if(user.address.line1){
                    setName(user.name)
                    setUid(user.userId)
                    setRpin(user.rPin? user.rPin : '')

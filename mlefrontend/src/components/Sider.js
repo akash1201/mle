@@ -126,6 +126,16 @@ const Sider = () => {
                             </li>
                     ))
                      :
+                     userInfo.userType == 'user'?
+                     sidebar.filter(e=>e.user).map((e, i)=>(
+                        <li className="active" key={i}>
+                           <Link to={e.path}>
+                                    <i className={e.icon}></i>{" "}
+                                    <span className="mini-click-non">{e.name}</span>
+                           </Link>
+                         </li>
+                     ))
+                     :
                      <></>
                         }
                         <li>

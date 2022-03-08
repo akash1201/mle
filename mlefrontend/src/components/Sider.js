@@ -28,7 +28,7 @@ const Sider = () => {
               path : '/my-dashboard',
               admin: true,
               user: true,
-              vendor : true
+              vendor : false
           },
           {
             name : 'Add Downline',
@@ -36,7 +36,7 @@ const Sider = () => {
             path : '/add-downline',
             admin: true,
             user: true,
-            vendor : true
+            vendor : false
         },
         {
             name : 'Membership Benefits',
@@ -68,7 +68,7 @@ const Sider = () => {
             path : '/generate-rpin',
             admin: true,
             user: true,
-            vendor : true
+            vendor : false
         },
         {
             name : 'Genarate Bill',

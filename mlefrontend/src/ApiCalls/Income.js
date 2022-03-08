@@ -28,8 +28,24 @@ const getMembershipBenefits = async () => {
         let response = await axios.get(`/api/income/get-membership-benefits`, config);
         return response.data.data;
      }catch(err){
-          return [];
+          return err.response;
      }
 }
 
-export { getIncome, getMembershipBenefits }
+const generateBill = async (data) => {
+     let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+     let config = {
+          headers : {
+               Authorization : `Bearer ${userInfo.token}`
+          }
+     }
+     try{
+        let response = await axios.post(`/api/income/generate-bill`,data, config);
+        console.log(response);
+        return response;
+     }catch(err){
+          return err.response;
+     }
+}
+
+export { getIncome, getMembershipBenefits, generateBill  }

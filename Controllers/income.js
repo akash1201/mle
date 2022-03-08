@@ -1,4 +1,7 @@
 import asyncHandler from 'express-async-handler';
+import Bill from '../Models/Bill.js';
+import User from '../Models/User.js';
+import jwt from 'jsonwebtoken';
 
 const incomeChartStatic = [
           {         id : 1,
@@ -47,4 +50,31 @@ const getMembershipBenefits = asyncHandler(async(req, res)=>{
 
 })
 
-export { getIncomeChart, getMembershipBenefits }
+const generateBill = asyncHandler(async (req, res)=>{
+
+          let {userId} = req.body;
+          let token = req.headers.authorization.split(' ')[1]
+          let userid = jwt.verify(token, process.env.JWT_SECRET)
+          console.log(userid.id)
+          let billPerson = await User.findOne({_id : userid.id})
+          let user = await User.findOne({userId : userId})
+          if(!user){
+                res.status(400).json({msg : 'User do not exists'})
+          }else if(billPerson.userType != 'vendor'){
+                    res.status(401).json({msg : 'User not authorized to generate bill'})
+          }else{
+
+                    let obj = {
+                              issuedTo : userId,
+                              issuedBy : userid.id,
+                              amount : req.body.amount,
+                              category : req.body.category,
+                              details : req.body.details
+                    }
+
+                    let bill = await Bill.create(obj);
+                    res.json({msg : 'Bill Created', data : bill});
+          }
+})
+
+export { getIncomeChart, getMembershipBenefits, generateBill }

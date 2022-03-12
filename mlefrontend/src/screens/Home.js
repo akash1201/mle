@@ -109,7 +109,7 @@ return (    <>
                                        </Col>
                              </Row>
 
-                             <Row>
+                             {userInfo.userType && <Row>
                                        <Col md={6}>
                                           <Form.Group className="mb-3" controlId="formBasicEmail">
                                                   <Form.Label>RPin</Form.Label>
@@ -122,7 +122,7 @@ return (    <>
                                                   <Form.Control value={designation} disabled type="text" style={{backgroundColor:'gray', color : 'white'}}/>
                                            </Form.Group>
                                        </Col>
-                             </Row>
+                             </Row>}
 
                              <Row>
                                        <Col md={6}>

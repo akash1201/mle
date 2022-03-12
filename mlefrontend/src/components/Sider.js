@@ -17,7 +17,7 @@ const Sider = () => {
         {
             name : 'My Profile',
             icon : 'fas fa-user',
-            path : '/',
+            path : '/dashboard',
             admin: true,
             user: true,
             vendor : true
@@ -52,6 +52,14 @@ const Sider = () => {
             path : '/vendor-management',
             admin: true,
             user: false,
+            vendor : false
+        },
+        {
+            name : 'My Bills',
+            icon : 'fas fa-cog',
+            path : '/my-bills',
+            admin: true,
+            user: true,
             vendor : false
         },
         {

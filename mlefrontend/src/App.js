@@ -12,6 +12,8 @@ import GenerateBill from './VendorScreens/GenerateBill';
 import AddMember from './AdminScreens/AddMembers';
 import UserManagement from './screens/UserManagement';
 import { Routes, Route } from 'react-router-dom'
+import MyBills from './screens/MyBills';
+import Homepage from './Homepage/Homepage';
 
 
 
@@ -21,8 +23,9 @@ function App() {
   },[])
   return (
                     <Routes>
-                      <Route path='/' element={<Home />}/>
+                      <Route path='/' element={<Homepage />}/>
                       {/* <Route index component={Home}/> */}
+                      <Route path='dashboard' element={<Home />}/>
                       <Route path='login' element={<LoginScreen />}/>
                       <Route path='generate-rpin'element={<GenerateRpin/>}/>
                       <Route path='my-dashboard' element={<MyDashboard/>}/>
@@ -33,6 +36,7 @@ function App() {
                       <Route path='add-vendor' element={<AddVendor />}/>
                       <Route path='generate-bill' element={<GenerateBill />}/>
                       <Route path='users' element={<UserManagement />}/>
+                      <Route path='my-bills' element={<MyBills />}/>
                     </Routes>
   );
 }

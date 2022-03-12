@@ -179,4 +179,19 @@ const getUsers = async () => {
         return err.response
    }
 }
-export {generateOrder, getUsers,getVendors, addUser,login, generateRpin, getAllRpins, registerUser, getMyDownLines, getUserProfile, registerVendor}
+const getUserBills = async () => {
+     let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+     let config = {
+          headers : {
+               Authorization : `Bearer ${userInfo.token}`
+          }
+     }
+
+   try{
+     let response = await axios.get(`/api/income/get-user-bills`, config)
+     return response.data
+   }catch(err){
+        return err.response
+   }
+}
+export {generateOrder, getUserBills,getUsers,getVendors, addUser,login, generateRpin, getAllRpins, registerUser, getMyDownLines, getUserProfile, registerVendor}

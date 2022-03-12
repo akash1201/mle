@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { login } from '../ApiCalls/UserAuth'
 import {useNavigate} from 'react-router-dom'
 
@@ -7,6 +7,13 @@ const LoginScreen = ({match}) => {
          
 
         let navigate = useNavigate()
+        let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
+        useEffect(()=>{
+              if(userInfo){
+                  navigate('/dashboard')
+              }
+        }, [])
 
          const [userName, setUserName] = useState(()=>'')
          const [password, setPassword] = useState(()=>'')
@@ -33,7 +40,7 @@ const LoginScreen = ({match}) => {
              if(response.status == 200){
                 setLoading(false)
                 localStorage.setItem('userInfo', JSON.stringify(response.data))
-                navigate('/')
+                navigate('/dashboard')
              }else{
                 setLoading(false)
                 setError(response.data.msg)

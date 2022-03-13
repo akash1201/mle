@@ -1,7 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 
 const Homepage = () => {
+
+    const [images, setImages] = useState(()=>['./img/founders/lakshmi-braik.png', './img/founders/bijay-braik.png'])
+
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 100,
+        autoPlaySpeed : 100,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoPlay : true
+      };
 
           return(<>
     <div className="modal fade" tabIndex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">
@@ -71,7 +84,26 @@ const Homepage = () => {
                   
                     <figure className="w-100">
                         {/* <!-- <img alt="Image placeholder" src="assets/img/svg/illustrations/illustration-3.svg" className="img-fluid mw-md-120"> --> */}
-                        <img alt="Image placeholder" src="./assets/img/delivery-boy.png" className="img-fluid mw-md-120" />
+                        {/* <img alt="Image placeholder" src={images} className="img-fluid mw-md-120" /> */}
+
+                        <Slider 
+                        dots = {true}
+                        infinite = {true}
+                        speed ={500}
+                        autoplay={true}
+                        autoplaySpeed={200}
+                        slidesToShow = {1}
+                        slidesToScroll= {1}
+                        >
+                            {
+                                images.length != 0 &&
+                                images.map((e, i)=>(
+                                    <div key={i}>
+                                    <img alt="Image placeholder" src={e} className="img-fluid mw-md-120" />
+                                  </div>
+                                ))
+                            }
+                        </Slider>
 
                     </figure>
                 </div>

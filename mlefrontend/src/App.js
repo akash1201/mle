@@ -1,5 +1,7 @@
 import React,{ useEffect } from 'react';
 import 'antd/dist/antd.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import LoginScreen from './screens/LoginScreen';
 import GenerateRpin from './screens/GenerateRpin';
 import MyDashboard from './screens/MyDashboard';

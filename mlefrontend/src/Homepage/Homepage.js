@@ -83,7 +83,7 @@ const Homepage = () => {
                 <div className="col-12 col-md-5 col-lg-6 order-md-2 text-center">
                   
                     <figure className="w-100">
-                        
+
 
                         {/* <!-- <img alt="Image placeholder" src="assets/img/svg/illustrations/illustration-3.svg" className="img-fluid mw-md-120"> --> */}
                         {/* <img alt="Image placeholder" src={images} className="img-fluid mw-md-120" /> */}
@@ -91,9 +91,9 @@ const Homepage = () => {
                         <Slider 
                         dots = {true}
                         infinite = {true}
-                        speed ={500}
+                        speed ={1000}
                         autoplay={true}
-                        autoplaySpeed={200}
+                        autoplaySpeed={3000}
                         slidesToShow = {1}
                         slidesToScroll= {1}
                         >

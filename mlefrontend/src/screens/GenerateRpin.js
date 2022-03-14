@@ -29,9 +29,9 @@ const GenerateRpin = () => {
            
             e.preventDefault()
             setLoading(true)
-            let order = await generateOrder()
-            if(order.status == 200){
-              displayRazorpay(order.data.id);
+          
+            if(true){
+              
             }else{
               setError('Payment Gateway Error')
               setLoading(false)
@@ -42,43 +42,46 @@ const GenerateRpin = () => {
           let userInfo = JSON.parse(localStorage.getItem('userInfo'))
           
 
-          async function displayRazorpay(id) {
-            const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
-        
-            if (!res) {
-              alert('Razorpay SDK failed to load. Are you online?')
-              return
-            }
-        
-            const options = {
-              key: 'rzp_test_nYu75Htxw4ZmiZ',
-              currency: 'INR',
-              amount: '50000',
-              order_id: id,
-              name: 'Rpin Generation',
-              description: 'Thank you for registering with JLE Mega Mart',
-              image: 'http://localhost:1337/logo.svg',
-              handler:async function (response) {
-                // alert(response.razorpay_payment_id)
-                // alert(response.razorpay_order_id)
-                // alert(response.razorpay_signature)
-                let response1 = await generateRpin()
-                  console.log(response)
-                  if(response1.status == 200){
-                      setRpin(response1.data.rpin)
-                      setLoading(false)
-                  }else{
-                            setError(response1.data)
-                            setLoading(false)
-                  }
-              },
-              prefill: {
-                name : userInfo.name,
-              }
-            }
-            setLoading(false);
-            const paymentObject = new window.Razorpay(options)
-            paymentObject.open()
+          async function displayRazorpay(e) {
+            e.preventDefault();
+            console.log('HII')
+            loadScript('https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/OhKWfG63235488646929.js')
+                              .then((res)=>{
+                                console.log(res);
+                                var config = {
+                                  "root": "",
+                                  "flow": "DEFAULT",
+                                  "data": {
+                                  "orderId": "order1", /* update order id */
+                                  "token": "qwqqwq", /* update token value */
+                                  "tokenType": "TXN_TOKEN",
+                                  "amount": "1350" /* update amount */
+                                  },
+                                  "handler": {
+                                    "notifyMerchant": function(eventName,data){
+                                      console.log("notifyMerchant handler function called");
+                                      console.log("eventName => ",eventName);
+                                      console.log("data => ",data);
+                                    } 
+                                  }
+                                };
+                          
+                                if(window.Paytm && window.Paytm.CheckoutJS){
+                                    window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+                                        // initialze configuration using init method 
+                                        window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                                            // after successfully updating configuration, invoke JS Checkout
+                                            window.Paytm.CheckoutJS.invoke();
+                                        }).catch(function onError(error){
+                                            console.log("error => ",error);
+                                        });
+                                    });
+                                } 
+                              })
+                              .catch(err=>{
+                                console.log(err)
+                                alert('Razorpay SDK failed to load. Are you online?')
+                              })
           }
 
           return (
@@ -118,7 +121,7 @@ const GenerateRpin = () => {
 
                                {!rpin &&
                                   <div >
-                                  <button onClick={generatePin}  style={{width : '20%'}} disabled={loading} className="btn btn-success btn-block loginbtn" >Generate</button>
+                                  <button onClick={displayRazorpay}  style={{width : '20%'}} disabled={loading} className="btn btn-success btn-block loginbtn" >Generate</button>
                                  </div>
                                }
                               </div>

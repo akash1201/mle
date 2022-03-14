@@ -4,17 +4,7 @@ import Slider from "react-slick";
 
 const Homepage = () => {
 
-    const [images, setImages] = useState(()=>['./img/founders/lakshmi-braik.png', './img/founders/bijay-braik.png'])
-
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 100,
-        autoPlaySpeed : 100,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoPlay : true
-      };
+    const [images, setImages] = useState(()=>['./img/founders/jay-braik.png', './img/founders/bijay-braik.png'])
 
           return(<>
     <div className="modal fade" tabIndex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">

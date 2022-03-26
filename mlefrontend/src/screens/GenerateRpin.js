@@ -2,86 +2,71 @@ import React, {useEffect, useState} from 'react'
 import Sider from '../components/Sider'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import {generateRpin, generateOrder} from '../ApiCalls/UserAuth'
+import {generateRpin, generateOrder, generateOrderToken} from '../ApiCalls/UserAuth'
+import { cashfreeSandbox } from 'cashfree-dropjs';
+//use import { cashfreeProd } from 'cashfree-dropjs';
+import {Modal, Button} from 'react-bootstrap'
 
-
-function loadScript(src) {
-	return new Promise((resolve) => {
-		const script = document.createElement('script')
-		script.src = src
-		script.onload = () => {
-			resolve(true)
-		}
-		script.onerror = () => {
-			resolve(false)
-		}
-		document.body.appendChild(script)
-	})
-}
 
 const GenerateRpin = () => {
 
           const [loading, setLoading] = useState(()=>false)
           const [error, setError] = useState(()=>'')
           const [rpin, setRpin] = useState(()=>'')
-
-          const generatePin = async(e) => {
-           
-            e.preventDefault()
-            setLoading(true)
-          
-            if(true){
-              
-            }else{
-              setError('Payment Gateway Error')
-              setLoading(false)
-            }
-           
-          }
-
+          const [show, setShow] = useState(()=>false)
           let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-          
 
-          async function displayRazorpay(e) {
-            e.preventDefault();
-            console.log('HII')
-            loadScript('https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/OhKWfG63235488646929.js')
-                              .then((res)=>{
-                                console.log(res);
-                                var config = {
-                                  "root": "",
-                                  "flow": "DEFAULT",
-                                  "data": {
-                                  "orderId": "order1", /* update order id */
-                                  "token": "qwqqwq", /* update token value */
-                                  "tokenType": "TXN_TOKEN",
-                                  "amount": "1350" /* update amount */
-                                  },
-                                  "handler": {
-                                    "notifyMerchant": function(eventName,data){
-                                      console.log("notifyMerchant handler function called");
-                                      console.log("eventName => ",eventName);
-                                      console.log("data => ",data);
-                                    } 
-                                  }
-                                };
-                          
-                                if(window.Paytm && window.Paytm.CheckoutJS){
-                                    window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
-                                        // initialze configuration using init method 
-                                        window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-                                            // after successfully updating configuration, invoke JS Checkout
-                                            window.Paytm.CheckoutJS.invoke();
-                                        }).catch(function onError(error){
-                                            console.log("error => ",error);
-                                        });
-                                    });
-                                } 
-                              })
-                              .catch(err=>{
-                                console.log(err)
-                                alert('Razorpay SDK failed to load. Are you online?')
-                              })
+
+          const generatePin = async(type) => {
+            try
+            { let data = await generateOrderToken(type);
+             console.log(data);
+
+             let testCashfree = new cashfreeSandbox.Cashfree();
+//let prodCashfree = new cashfreeProd.Cashfree();
+const dropConfig = {
+  "components": [
+      "order-details",
+      "card",
+      "netbanking",
+      "app",
+      "upi"
+  ],
+  "orderToken": data.order_token,
+  "onSuccess": function(data) {
+      console.log(data);
+      setShow(false);
+      generateRpin(type)
+      .then(res=>{
+          console.log(res)
+          setRpin(res.data.rpin)
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+  },
+  "onFailure": function(data) {
+      console.log(data)
+      setShow(false);
+      setError('Cannot Complate payment');
+  },
+  "style": {
+      "backgroundColor": "#ffffff",
+      "color": "#11385b",
+      "fontFamily": "Lato",
+      "fontSize": "14px",
+      "errorColor": "#ff0000",
+      "theme": "light", //(or dark)
+  }
+}   
+ setShow(true)
+     let element = document.getElementById('payment_id_div');
+    testCashfree.initialiseDropin(element, dropConfig);
+             
+            }catch(err){
+              console.log(err);
+            }
+          
           }
 
           return (
@@ -116,13 +101,18 @@ const GenerateRpin = () => {
 
                               <div className="container">
                               <div className="form-group">
-                                <input type="text" value={rpin} className="form-control" style={{width : '40%'}}/>
+                                <input type="text" value={rpin} className="form-control" />
                             </div>
 
                                {!rpin &&
-                                  <div >
-                                  <button onClick={displayRazorpay}  style={{width : '20%'}} disabled={loading} className="btn btn-success btn-block loginbtn" >Generate</button>
+                                <>
+                                    <div style={{marginBottom : '2%'}}>
+                                  <button onClick={(e)=>{e.preventDefault();generatePin(1)}}   disabled={loading} className="btn btn-success btn-block loginbtn" >pay Rs. 1150 and Generate</button>
                                  </div>
+                                  <div >
+                                  <button onClick={(e)=>{e.preventDefault();generatePin(2)}}  disabled={loading} className="btn btn-success btn-block loginbtn" >Pay Rs. 1550 and Generate</button>
+                                 </div>
+                                </>
                                }
                               </div>
                             </form>
@@ -137,6 +127,21 @@ const GenerateRpin = () => {
            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
        </div>
    </div>
+   <Modal show={show} style={{opacity : 1}}>
+        <Modal.Header>
+          <Modal.Title>Payment Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+              <div id='payment_id_div'>
+
+              </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={()=>{setShow(false)}}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
                        <Footer/>
                     </div>
         

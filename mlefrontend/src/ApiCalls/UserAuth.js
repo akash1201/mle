@@ -20,7 +20,7 @@ let data = {
 
 }
 
-const generateRpin = async () => {
+const generateRpin = async (type) => {
 
      let userInfo = JSON.parse(localStorage.getItem('userInfo'))
      let config = {
@@ -30,7 +30,7 @@ const generateRpin = async () => {
      }
 
    try{
-     let response = await axios.get(`/api/users/generate-rpin`, config)
+     let response = await axios.get(`/api/users/generate-rpin/${type}`, config)
      return response
    }catch(err){
         return err.response
@@ -194,4 +194,24 @@ const getUserBills = async () => {
         return err.response
    }
 }
-export {generateOrder, getUserBills,getUsers,getVendors, addUser,login, generateRpin, getAllRpins, registerUser, getMyDownLines, getUserProfile, registerVendor}
+
+const generateOrderToken = async (type) => {
+     let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+     let config = {
+          headers : {
+               Authorization : `Bearer ${userInfo.token}`
+          }
+     }
+
+   try{
+        let amount = 1150;
+        if(type == 2){
+             amount = 1550;
+        }
+     let response = await axios.get(`/api/cashfree/create-order/${amount}`, config)
+     return response.data
+   }catch(err){
+        return err.response
+   }
+}
+export {generateOrderToken,generateOrder, getUserBills,getUsers,getVendors, addUser,login, generateRpin, getAllRpins, registerUser, getMyDownLines, getUserProfile, registerVendor}

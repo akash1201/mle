@@ -21,6 +21,10 @@ const RpinSchema = mongoose.Schema({
         },
         assignedTo : {
                   type : String
+        },
+        type : {
+                type : Number,
+                default : 1
         }
 },
           {

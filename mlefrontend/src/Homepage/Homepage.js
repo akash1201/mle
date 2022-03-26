@@ -331,9 +331,9 @@ const Homepage = () => {
                     <div className="col-md-6">
                         <ul className="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <Link className="nav-link" to='/terms-and-conditions'>
                                     Terms
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">

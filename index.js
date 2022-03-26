@@ -6,6 +6,7 @@ import userRoutes from './Routers/user.js';
 import incomeRoutes from './Routers/income.js';
 import morgan from 'morgan';
 import razorpayRoutes from './Routers/razorpay.js'
+import cashfree from './Routers/cashfree.js'
 import path from 'path'
 
 env.config()
@@ -26,6 +27,7 @@ mongoose.connect(process.env.DB_HOST).then(()=>{
 app.use(`/api/users`, userRoutes);
 app.use(`/api/income`, incomeRoutes);
 app.use(`/api/razorpay`, razorpayRoutes);
+app.use(`/api/cashfree`, cashfree);
 
 const __dirname = path.resolve()
 // app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

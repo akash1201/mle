@@ -115,7 +115,8 @@ const generateRpin = asyncHandler( async (req, res) => {
           let obj = {
                      rpin : rpin,
                      generatedBy : userid.id,
-                     isAssigned : false
+                     isAssigned : false,
+                     type : req.params.type
           }
 
           let rpinObj = await Rpin.create(obj)

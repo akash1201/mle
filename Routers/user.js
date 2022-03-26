@@ -17,7 +17,7 @@ let router = express.Router()
 
 router.post(`/register-user`, registerUser);
 router.post(`/login`, authUser);
-router.get(`/generate-rpin`, protect,generateRpin);
+router.get(`/generate-rpin/:type`, protect,generateRpin);
 router.get(`/get-all-rpin`, protect,getAllRpin);
 router.get(`/get-my-downlines`, protect,getMyDownlines);
 router.get(`/get-user-info`, protect,getUserInfo);

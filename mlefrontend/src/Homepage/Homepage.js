@@ -119,7 +119,8 @@ const Homepage = () => {
             </div>
         </div>
     </section>
-    <section className="slice slice-lg pt-lg-6 pb-0 pb-lg-6 bg-section-secondary">
+    
+    {/* <section className="slice slice-lg pt-lg-6 pb-0 pb-lg-6 bg-section-secondary">
         <div className="container">
             <div className="row mb-5 justify-content-center text-center">
                 <div className="col-lg-6">
@@ -272,7 +273,7 @@ const Homepage = () => {
             </div>
         </div>
     </section>
-
+ */}
 
     <footer className="position-relative" id="footer-main">
         <div className="footer pt-lg-7 footer-dark bg-dark">
@@ -336,14 +337,14 @@ const Homepage = () => {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <Link className="nav-link" to="/privacy-policy">
                                     Privacy
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
-                                    Cookies
-                                </a>
+                                <Link className="nav-link" to="/refund">
+                                    Refund
+                                </Link>
                             </li>
                         </ul>
                     </div>

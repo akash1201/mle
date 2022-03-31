@@ -278,9 +278,9 @@ const PrivacyPolicy = () => {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
-                                    Cookies
-                                </a>
+                                <Link className="nav-link" to="/refund">
+                                    Refund
+                                </Link>
                             </li>
                         </ul>
                     </div>

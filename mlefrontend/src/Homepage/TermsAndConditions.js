@@ -209,12 +209,12 @@ The Website User also agrees that all claims, differences and disputes arising u
                       
                         <ul className="nav mt-4">
                             <li className="nav-item">
-                                <a className="nav-link" href="https://www.instagram.com/webpxs" target="_blank">
+                                <a className="nav-link" href="#" target="_blank">
                                     <i className="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="https://www.facebook.com/webpixels" target="_blank">
+                                <a className="nav-link" href="#" target="_blank">
                                     <i className="fab fa-facebook"></i>
                                 </a>
                             </li>
@@ -235,7 +235,7 @@ The Website User also agrees that all claims, differences and disputes arising u
                 <div className="row align-items-center justify-content-md-between pb-4">
                     <div className="col-md-6">
                         <div className="copyright text-sm font-weight-bold text-center text-md-left">
-                            &copy; 2022 <a href="https://webpixels.io" className="font-weight-bold" target="_blank">JLE Megamart</a>. All rights reserved
+                            &copy; 2022 <a href="#" className="font-weight-bold" target="_blank">JLE Megamart</a>. All rights reserved
                         </div>
                     </div>
                     <div className="col-md-6">

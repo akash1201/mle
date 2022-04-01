@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ContactUs = () => {
+const AboutUs = () => {
 
-          return (
-                    <>
+          return (<>
            <div className="modal fade" tabIndex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">
         <div className="modal-dialog modal-dialog-aside left-4 right-4 bottom-4">
             <div className="modal-content bg-dark-dark">
@@ -29,7 +28,7 @@ const ContactUs = () => {
             </a>
            
             <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav mt-4 mt-lg-0 ml-auto"></ul>
+                <ul className="navbar-nav mt-4 mt-lg-0 ml-auto"></ul>
                
                 <Link className="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" to="/login">
                     Sign In
@@ -41,24 +40,29 @@ const ContactUs = () => {
             </div>
         </div>
     </nav>
-    <section class="slice slice-lg">
-        <div class="container">
-            <div class="row row-grid justify-content-between align-items-center">
-                <div class="col-lg-5">
-                    <h3>Matelli<br />Jalpaiguri, W.B., 735223</h3>
-                    <p class="lead my-4">
-                        E: <a href="#">jlemegamart@gmail.com</a><br />
-                        T: +91-8724019454
-                    </p>
-                    <p>
-                        Want to share any feedback with us, report a technical issue or just ask us a question? Fill free to contact us and we will get back to you shortly.
-                    </p>
-                </div>
-                <div class="col-lg-6">
-                    {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830872278!2d-74.1197639579598!3d40.69766374873451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sro!4v1580299124407!5m2!1sen!2sro" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" class="rounded"></iframe> */}
+     
+    <section class="slice py-8 bg-dark">
+        <div class="container py-5">
+            <div class="row row-grid align-items-center">
+                <div class="col-lg-8 text-center text-lg-left">
+
+                    <h1 class="text-white mb-4">
+                    JLE is an attempt to give tier 2 city the feel of e-commerce with a MLM benefits.
+
+                    </h1>
+
+                    {/* <p class="lead text-white opacity-8">
+                        For over 5 years, we pride ourselves on our commitment to excellence, as well as our ability to deliver for our customers.
+                    </p> */}
                 </div>
             </div>
         </div>
+
+        {/* <div class="shape-container shape-line shape-position-bottom">
+            <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" >
+                <polygon points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div> */}
     </section>
 
     <footer className="position-relative" id="footer-main">
@@ -132,6 +136,7 @@ const ContactUs = () => {
                                     Refund
                                 </Link>
                             </li>
+
                             <li className="nav-item">
                                 <Link className="nav-link" to="/contact-us">
                                     Contact Us
@@ -148,8 +153,7 @@ const ContactUs = () => {
             </div>
         </div>
     </footer>
-                    </>
-          )
+               </>)
 }
 
-export default ContactUs;
+export default AboutUs;

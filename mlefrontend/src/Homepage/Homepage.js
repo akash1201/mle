@@ -38,10 +38,10 @@ const Homepage = () => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
                
                 <ul className="navbar-nav mt-4 mt-lg-0 ml-auto">
-                    {/* <!-- <li className="nav-item ">
+                   {/* <li className="nav-item ">
                         <a className="nav-link" href="index.html">Overview</a>
-                    </li>
-                    <li className="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    </li> */}
+                    {/* <li className="nav-item dropdown dropdown-animate" data-toggle="hover">
                         <a className="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                         <div className="dropdown-menu dropdown-menu-single">
                             <a href="index.html" className="dropdown-item">Homepage</a>
@@ -50,10 +50,10 @@ const Homepage = () => {
                             <div className="dropdown-divider"></div>
                             <a href="login.html" className="dropdown-item">Login</a>
                         </div>
-                    </li>
-                    <li className="nav-item ">
+                    </li> */}
+                    {/* <li className="nav-item ">
                         <a className="nav-link" href="docs/index.html">Docs</a>
-                    </li> --> */}
+                    </li>  */}
                 </ul>
                
                 <Link className="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" to="/login">
@@ -344,6 +344,11 @@ const Homepage = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/refund">
                                     Refund
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/about-us">
+                                    About Us
                                 </Link>
                             </li>
                         </ul>

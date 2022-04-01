@@ -23,11 +23,12 @@ const Refund = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-white">
         <div className="container">
 
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="/">
                 <span><h3><span style={{color : '#7ac81e'}}>JLE </span>Megamart</h3></span>
             </a>
            
             <div className="collapse navbar-collapse" id="navbarCollapse">
+                <ul className="navbar-nav mt-4 mt-lg-0 ml-auto"></ul>
                
                 <Link className="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" to="/login">
                     Sign In
@@ -111,6 +112,17 @@ const Refund = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/refund">
                                     Refund
+                                </Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/contact-us">
+                                    Contact Us
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/about-us">
+                                    About Us
                                 </Link>
                             </li>
                         </ul>

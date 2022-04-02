@@ -130,7 +130,7 @@ const getAllRpin = asyncHandler( async (req, res) => {
           let token = req.headers.authorization.split(' ')[1];
           let userid = jwt.verify(token, process.env.JWT_SECRET);
           
-        let pins = await Rpin.find({generatedBy : userid.id, paymentStatus : 'paid', isAssigned : false})
+        let pins = await Rpin.find({generatedBy : userid.id, paymentStatus : 'paid', iAssigned : false})
 
            
           res.json({rpins : pins})

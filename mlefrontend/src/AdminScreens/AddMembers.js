@@ -81,6 +81,10 @@ const AddMember = () => {
                         errorAndClear('Enter IFSC');
                         return;
                     }
+                    if(password == cpassword){
+                        errorAndClear('Password do not match!');
+                        return;
+                    }
                      let data = {
                          parentId : userInfo.id,
                          name : name,
@@ -258,7 +262,7 @@ return (
                                           <Col md={6}>
                                              <Form.Group className="mb-3" controlId="formBasicEmail">
                                                      <Form.Label>Account No</Form.Label>
-                                                     <Form.Control value={accountNo} onChange={e=>{setAccountNo(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                                     <Form.Control value={accountNo} onChange={e=>{setAccountNo(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
                                               </Form.Group>
                                           </Col>
                                           <Col md={6}>

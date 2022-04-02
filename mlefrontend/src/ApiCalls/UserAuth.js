@@ -204,11 +204,13 @@ const generateOrderToken = async (type) => {
      }
 
    try{
-        let amount = 1150;
+        let amount = 1550;
         if(type == 2){
-             amount = 1550;
+             amount = 1650;
+        }else if (type == 3){
+             amount = 2100
         }
-     let response = await axios.get(`/api/cashfree/create-order/${amount}`, config)
+     let response = await axios.get(`/api/paytm/checksum/${amount}`, config)
      return response.data
    }catch(err){
         return err.response

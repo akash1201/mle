@@ -92,6 +92,10 @@ const AddDownline = () => {
             errorAndClear('Enter IFSC');
             return;
         }
+        if(password != cpassword){
+            errorAndClear('Password do not match!');
+            return;
+        }
 
 
 
@@ -197,7 +201,7 @@ return (    <>
                                <Col md={6}>
                                <Form.Group className="mb-3" controlId="formBasicEmail">
                                           <Form.Label>Phone No.</Form.Label>
-                                          <Form.Control value={phoneNo} onChange={e=>{setPhoneNo(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                          <Form.Control value={phoneNo} onChange={e=>{setPhoneNo(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
                                    </Form.Group>
                                </Col>
                      </Row>
@@ -236,7 +240,7 @@ return (    <>
                                <Col md={6}>
                                <Form.Group className="mb-3" controlId="formBasicEmail">
                                           <Form.Label>Pin Code</Form.Label>
-                                          <Form.Control value={pin} onChange={e=>{setPin(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                          <Form.Control value={pin} onChange={e=>{setPin(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
                                    </Form.Group>
                                </Col>
                                <Col md={6}>
@@ -277,7 +281,7 @@ return (    <>
                                <Col md={6}>
                                   <Form.Group className="mb-3" controlId="formBasicEmail">
                                           <Form.Label>Account No</Form.Label>
-                                          <Form.Control value={accountNo} onChange={e=>{setAccountNo(e.target.value)}} type="text" style={{backgroundColor:'white', color : 'black'}}/>
+                                          <Form.Control value={accountNo} onChange={e=>{setAccountNo(e.target.value)}} type="number" style={{backgroundColor:'white', color : 'black'}}/>
                                    </Form.Group>
                                </Col>
                                <Col md={6}>

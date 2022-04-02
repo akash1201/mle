@@ -16,55 +16,60 @@ const GenerateRpin = () => {
           const [show, setShow] = useState(()=>false)
           let userInfo = JSON.parse(localStorage.getItem('userInfo'))
 
+          function onScriptLoad(amount, orderid, token){
+            var config = {
+              "root": "payment_id_div",
+              "flow": "DEFAULT",
+              "data": {
+              "orderId": orderid, /* update order id */
+              "token": token, /* update token value */
+              "tokenType": "TXN_TOKEN",
+              "amount": amount /* update amount */
+              },
+              "handler": {
+                "notifyMerchant": function(eventName,data){
+                  // setShow(true)
+                  console.log("notifyMerchant handler function called");
+                  console.log("eventName => ",eventName);
+                  // console.log("data => ",data);
+                } 
+              }
+            };
+      
+            if(window.Paytm && window.Paytm.CheckoutJS){
+              console.log('Here')
+                window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+                    // initialze configuration using init method 
+                    console.log(config)
+                    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                        // after successfully updating configuration, invoke JS Checkout
+                        window.Paytm.CheckoutJS.invoke();
+                    }).catch(function onError(error){
+                        console.log("error => ",error);
+                    });
+                });
+            } 
+        }
+
 
           const generatePin = async(type) => {
             try
-            { let data = await generateOrderToken(type);
-             console.log(data);
-
-             let testCashfree = new cashfreeSandbox.Cashfree();
-//let prodCashfree = new cashfreeProd.Cashfree();
-const dropConfig = {
-  "components": [
-      "order-details",
-      "card",
-      "netbanking",
-      "app",
-      "upi"
-  ],
-  "orderToken": data.order_token,
-  "onSuccess": function(data) {
-      console.log(data);
-      setShow(false);
-      generateRpin(type)
-      .then(res=>{
-          console.log(res)
-          setRpin(res.data.rpin)
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-  },
-  "onFailure": function(data) {
-      console.log(data)
-      setShow(false);
-      setError('Cannot Complate payment');
-  },
-  "style": {
-      "backgroundColor": "#ffffff",
-      "color": "#11385b",
-      "fontFamily": "Lato",
-      "fontSize": "14px",
-      "errorColor": "#ff0000",
-      "theme": "light", //(or dark)
-  }
-}   
- setShow(true)
-     let element = document.getElementById('payment_id_div');
-    testCashfree.initialiseDropin(element, dropConfig);
-             
+            { 
+              let data = await generateOrderToken(type);
+              console.log(data)
+              let amount = 1550;
+              if(type == 2){
+                   amount = 1650;
+              }else if (type == 3){
+                   amount = 2100
+              }
+              const script = document.createElement('script')
+              script.src = `https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/OhKWfG63235488646929.js`
+              document.body.appendChild(script);
+              script.addEventListener("load", ()=>{console.log(script);onScriptLoad(amount, data.orderid, data.data)})
+              // script.onLoad(()=>{onScriptLoad(amount, data.orderid, data.token)})
             }catch(err){
-              console.log(err);
+              console.log(err)
             }
           
           }
@@ -127,14 +132,15 @@ const dropConfig = {
            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
        </div>
    </div>
+   <div id='payment_id_div'>
+
+              </div>
    <Modal show={show} style={{opacity : 1}}>
         <Modal.Header>
           <Modal.Title>Payment Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-              <div id='payment_id_div'>
-
-              </div>
+              
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={()=>{setShow(false)}}>

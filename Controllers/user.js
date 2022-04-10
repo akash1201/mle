@@ -22,40 +22,9 @@ const registerUser = asyncHandler(async(req, res)=>{
                 ])
 
                 let slno = max[0].maxSlNo?(max[0].maxSlNo+1):(1)
-                 //Razor Pay api calls
-                 let key = `${process.env.RAZORPAY_KEY}:${process.env.RAZORPAY_SECRET}`;
-                 let encodedKey = base64.encode(key);
-                 let config = {
-                        'Content-Type': 'application/json',
-                         'Authorization' : `Basic ${encodedKey}`
-                 }
-                 let contactObj = {
-                       name : req.body.name,
-                       contact : req.body.phone,
-                       type : "customer"
-                 }
-                 let response = await fetch(`https://api.razorpay.com/v1/contacts`,{
-                    method: 'post',
-                    body: JSON.stringify(contactObj),
-                    headers: config
-                });
-                let data = await response.json();
-                let contactId = data.id;
-                let bankDetails = {
-                    contact_id : contactId,
-                    account_type : "bank_account",
-                    bank_account : {
-                        name : req.body.name,
-                        ifsc : req.body.ifsc,
-                        account_number : req.body.account
-                    }
-                }
-                let response1 = await fetch(`https://api.razorpay.com/v1/fund_accounts`,{
-                    method: 'post',
-                    body: JSON.stringify(bankDetails),
-                    headers: config
-                });
-                let data1 = await response1.json();
+               
+                let accNo = base64.encode(req.body.account);
+                let ifsc = base64.encode(req.body.ifsc);
 
                 let obj = {
                           parentId : req.body.parentId,
@@ -66,8 +35,8 @@ const registerUser = asyncHandler(async(req, res)=>{
                           rPin: req.body.rpin,
                           phone : req.body.phone,
                           password : req.body.password,
-                          contactId : contactId,
-                          fundId : data1.id
+                          bankAccountNo : accNo,
+                          bankIfsc : ifsc
                 }
 
                 try{
@@ -110,18 +79,15 @@ const generateRpin = asyncHandler( async (req, res) => {
           let userid = jwt.verify(token, process.env.JWT_SECRET)
           console.log(userid.id)
 
-          let rpin = uuidv4()
+          let rpinObj = await Rpin.findOne({orderId : req.params.type , generatedBy : userid.id})
+          console.log(rpinObj);
 
-          let obj = {
-                     rpin : rpin,
-                     generatedBy : userid.id,
-                     isAssigned : false,
-                     type : req.params.type
-          }
+          rpinObj.paymentStatus = 'paid'
 
-          let rpinObj = await Rpin.create(obj)
+          await rpinObj.save()
+
            
-          res.json({rpin : rpin})
+          res.json({rpin : rpinObj.rpin})
 
 })
 
@@ -281,39 +247,8 @@ const addUser = asyncHandler (async (req, res)=>{
 
     let slno = max[0].maxSlNo?(max[0].maxSlNo+1):(1)
 
-    let key = `${process.env.RAZORPAY_KEY}:${process.env.RAZORPAY_SECRET}`;
-    let encodedKey = base64.encode(key);
-    let config = {
-           'Content-Type': 'application/json',
-            'Authorization' : `Basic ${encodedKey}`
-    }
-    let contactObj = {
-          name : req.body.name,
-          contact : req.body.phone,
-          type : "customer"
-    }
-    let response = await fetch(`https://api.razorpay.com/v1/contacts`,{
-       method: 'post',
-       body: JSON.stringify(contactObj),
-       headers: config
-   });
-   let data = await response.json();
-   let contactId = data.id;
-   let bankDetails = {
-       contact_id : contactId,
-       account_type : "bank_account",
-       bank_account : {
-           name : req.body.name,
-           ifsc : req.body.ifsc,
-           account_number : req.body.account
-       }
-   }
-   let response1 = await fetch(`https://api.razorpay.com/v1/fund_accounts`,{
-       method: 'post',
-       body: JSON.stringify(bankDetails),
-       headers: config
-   });
-   let data1 = await response1.json();
+   let accNo = base64.encode(req.body.account);
+   let ifsc = base64.encode(req.body.ifsc);
 
    let obj = {
              parentId : req.body.parentId,
@@ -325,7 +260,9 @@ const addUser = asyncHandler (async (req, res)=>{
              phone : req.body.phone,
              password : req.body.password,
              contactId : contactId,
-             fundId : data1.id
+             fundId : data1.id,
+             bankAccountNo : accNo,
+             bankIfsc : ifsc
    }
    
     let user = await User.create(obj);

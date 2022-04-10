@@ -6,6 +6,7 @@ import {generateRpin, generateOrder, generateOrderToken} from '../ApiCalls/UserA
 import { cashfreeSandbox } from 'cashfree-dropjs';
 //use import { cashfreeProd } from 'cashfree-dropjs';
 import {Modal, Button} from 'react-bootstrap'
+import { useParams } from "react-router-dom";
 
 
 const GenerateRpin = () => {
@@ -16,9 +17,25 @@ const GenerateRpin = () => {
           const [show, setShow] = useState(()=>false)
           let userInfo = JSON.parse(localStorage.getItem('userInfo'))
 
+          let match = useParams()
+
+          useEffect(()=>{
+                // if()
+               if(match.success == 'success' && match.orderId){
+                generateRpin(match.orderId)
+                .then((res)=>{
+                     console.log(res)
+                     setRpin(res.data.rpin)
+                })
+                .catch(err=>{
+                  console.log(err)
+                })
+                }
+          },[])
+
           function onScriptLoad(amount, orderid, token){
             var config = {
-              "root": "payment_id_div",
+              "root": "#payment_id_div",
               "flow": "DEFAULT",
               "data": {
               "orderId": orderid, /* update order id */
@@ -31,13 +48,13 @@ const GenerateRpin = () => {
                   // setShow(true)
                   console.log("notifyMerchant handler function called");
                   console.log("eventName => ",eventName);
-                  // console.log("data => ",data);
+                  console.log("data => ",data);
                 } 
               }
             };
       
             if(window.Paytm && window.Paytm.CheckoutJS){
-              console.log('Here')
+                setShow(true)
                 window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
                     // initialze configuration using init method 
                     console.log(config)
@@ -46,6 +63,7 @@ const GenerateRpin = () => {
                         window.Paytm.CheckoutJS.invoke();
                     }).catch(function onError(error){
                         console.log("error => ",error);
+                        setShow(false)
                     });
                 });
             } 
@@ -112,10 +130,13 @@ const GenerateRpin = () => {
                                {!rpin &&
                                 <>
                                     <div style={{marginBottom : '2%'}}>
-                                  <button onClick={(e)=>{e.preventDefault();generatePin(1)}}   disabled={loading} className="btn btn-success btn-block loginbtn" >pay Rs. 1150 and Generate</button>
+                                  <button onClick={(e)=>{e.preventDefault();generatePin(1)}}   disabled={loading} className="btn btn-success btn-block loginbtn" >pay Rs. 1550 and Generate</button>
                                  </div>
-                                  <div >
-                                  <button onClick={(e)=>{e.preventDefault();generatePin(2)}}  disabled={loading} className="btn btn-success btn-block loginbtn" >Pay Rs. 1550 and Generate</button>
+                                  <div style={{marginBottom : '2%'}}>
+                                  <button onClick={(e)=>{e.preventDefault();generatePin(2)}}  disabled={loading} className="btn btn-success btn-block loginbtn" >Pay Rs. 1650 and Generate</button>
+                                 </div>
+                                 <div>
+                                  <button onClick={(e)=>{e.preventDefault();generatePin(3)}}   disabled={loading} className="btn btn-success btn-block loginbtn" >pay Rs. 2100 and Generate</button>
                                  </div>
                                 </>
                                }
@@ -132,15 +153,15 @@ const GenerateRpin = () => {
            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
        </div>
    </div>
-   <div id='payment_id_div'>
 
-              </div>
-   <Modal show={show} style={{opacity : 1}}>
+   <Modal show={show} style={{opacity : show?1:0}}>
         <Modal.Header>
           <Modal.Title>Payment Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-              
+           <div id='payment_id_div'>
+
+           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={()=>{setShow(false)}}>

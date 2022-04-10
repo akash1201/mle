@@ -34,7 +34,9 @@ function App() {
                       {/* <Route index component={Home}/> */}
                       <Route path='dashboard' element={<Home />}/>
                       <Route path='login' element={<LoginScreen />}/>
-                      <Route path='generate-rpin'element={<GenerateRpin/>}/>
+                      <Route path='generate-rpin' element={<GenerateRpin/>}>
+                         <Route path=':success/:orderId' element={<GenerateRpin/>}/>
+                      </Route>
                       <Route path='my-dashboard' element={<MyDashboard/>}/>
                       <Route path='add-downline' element={<AddDownline/>}/>
                       <Route path='membership-benefits' element={<CashBack />} />

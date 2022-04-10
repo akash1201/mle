@@ -252,7 +252,7 @@ return (    <>
                                                 {
                                                     rpins.length != 0?
                                                     rpins.map((e)=>(
-                                                        <option style={{color: 'black'}} value={e.rpin}>{e.rpin}</option>
+                                                        <option style={{color: 'black'}} value={e.rpin}>{`${e.rpin} (Type ${e.type})`}</option>
                                                     ))
                                                     :
                                                     <></>

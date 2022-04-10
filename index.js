@@ -9,6 +9,8 @@ import morgan from 'morgan';
 // import cashfree from './Routers/cashfree.js'
 import path from 'path'
 import paytmRoutes from './Routers/paytm.js'
+import payuRoutes from './Routers/payu.js'
+import GenerateRpin from './Routers/GenerateRpin.js'
 
 env.config()
 
@@ -28,6 +30,8 @@ mongoose.connect(process.env.DB_HOST).then(()=>{
 app.use(`/api/users`, userRoutes);
 app.use(`/api/income`, incomeRoutes);
 app.use(`/api/paytm`, paytmRoutes)
+app.use(`/api/payu`, payuRoutes)
+app.use(`/generate-rpin`, GenerateRpin);
 // app.use(`/api/razorpay`, razorpayRoutes);
 // app.use(`/api/cashfree`, cashfree);
 

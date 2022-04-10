@@ -44,7 +44,7 @@ const admin = (req, res, next) => {
 
 const vendor = (req,res,next)=>{
   console.log(req.user) 
-  if(req.user && req.user.userType=='vendor'){
+  if(req.user && (req.user.userType=='vendor' || req.user.userType=='admin')){
     next()
   }else{
     res.status(401)

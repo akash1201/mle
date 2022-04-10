@@ -44,13 +44,12 @@ const UserSchema = mongoose.Schema({
             type : String,
             default : 'customer'
           },
-          contactId : {
+          bankAccountNo : {
             type : String
           },
-          fundId : {
+          bankIfsc : {
             type : String
           }
-
 },
           {
           timestamps: true,

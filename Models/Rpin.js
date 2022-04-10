@@ -13,7 +13,7 @@ const RpinSchema = mongoose.Schema({
         },
         paymentStatus : {
                    type : String,
-                   default : 'paid'
+                   default : 'unpaid'
         },
         iAssigned : {
                 type : Boolean,
@@ -25,6 +25,10 @@ const RpinSchema = mongoose.Schema({
         type : {
                 type : Number,
                 default : 1
+        },
+        orderId : {
+                type : String,
+                required : true
         }
 },
           {

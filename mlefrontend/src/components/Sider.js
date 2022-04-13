@@ -94,7 +94,7 @@ const Sider = () => {
 
   return (
     <>
-      <div className="left-sidebar-pro">
+      <div className="left-sidebar-pro side_bar">
         <nav id="sidebar" className="">
           <div className="sidebar-header">
             <a href={"/"}>

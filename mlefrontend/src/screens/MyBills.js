@@ -13,7 +13,11 @@ const MyBills = () => {
 
   const [loading, setLoading] = useState(() => false);
   const [bills, setBills] = useState(() => []);
+  const [toggle, setToggle] = useState(true);
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   useEffect(() => {
     getUserBills()
       .then((e) => {
@@ -52,9 +56,10 @@ const MyBills = () => {
 
   return (
     <>
-      {userInfo && <Sider />}
+      {toggle ? userInfo && <Sider /> : ""}
+
       <div className="all-content-wrapper">
-        <Header />
+        <Header handleToggle={handleToggle} />
         <TopAnalysisData />
         <div className="product-sales-area mg-tb-30">
           <div className="container-fluid">

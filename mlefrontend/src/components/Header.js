@@ -1,6 +1,7 @@
 import React from "react";
+import "./header.css";
 
-const Header = () => {
+const Header = ({ handleToggle }) => {
   return (
     <>
       <div className="container-fluid">
@@ -17,7 +18,7 @@ const Header = () => {
 
       {/* Header */}
 
-      <div className="header-advance-area">
+      <div className="header-advance-area ">
         <div className="header-top-area">
           <div className="container-fluid">
             <div className="row">
@@ -25,11 +26,12 @@ const Header = () => {
                 <div className="header-top-wraper">
                   <div className="row">
                     <div className="col-lg-1 col-md-0 col-sm-1 col-xs-12">
-                      <div className="menu-switcher-pro">
+                      <div className="menu-switcher-pro hamburger_menu">
                         <button
                           type="button"
                           id="sidebarCollapse"
-                          className="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn"
+                          className="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn "
+                          onClick={handleToggle}
                         >
                           <i className="icon nalika-menu-task"></i>
                         </button>

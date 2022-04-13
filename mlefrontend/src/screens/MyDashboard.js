@@ -12,6 +12,11 @@ const MyDashboard = () => {
 
   const [tableData, setTableData] = useState(() => []);
   const [loading, setLoading] = useState(() => true);
+  const [toggle, setToggle] = useState(true);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   useEffect(() => {
     getMyDownLines()
       .then((e) => {
@@ -51,11 +56,11 @@ const MyDashboard = () => {
   ];
   return (
     <>
-      {userInfo && <Sider />}
-      <div className="all-content-wrapper">
-        <Header />
-        <TopAnalysisData />
+      {toggle ? userInfo && <Sider /> : ""}
 
+      <div className="all-content-wrapper">
+        <Header handleToggle={handleToggle} />
+        <TopAnalysisData />
         <div className="product-sales-area mg-tb-30">
           <div className="container-fluid">
             <div className="row">

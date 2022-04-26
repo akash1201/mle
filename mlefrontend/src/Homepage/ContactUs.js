@@ -80,7 +80,7 @@ const ContactUs = () => {
                         </a>
                        
                         <p className="mt-4 text-sm opacity-8 pr-lg-4">
-                            JLE is an attempt to give tier 2 city the feel of e-commerce with a MLM benefits.
+                            JLE is an attempt to give tier 2 city the feel of e-commerce.
 
                         </p>
                       

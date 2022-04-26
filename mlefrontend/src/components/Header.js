@@ -9,7 +9,7 @@ const Header = ({ handleToggle }) => {
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div className="logo-pro">
               <a href="index.html">
-                <img className="main-logo" src="img/logo/logo.png" alt="" />
+                {/* <img className="main-logo" src="img/logo/logoo.jpeg" alt="" /> */}
               </a>
             </div>
           </div>

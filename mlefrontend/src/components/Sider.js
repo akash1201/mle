@@ -99,11 +99,8 @@ const Sider = () => {
           <div className="sidebar-header">
             <a href={"/"}>
               {/* <h4 style={{ color: "white" }}>JLE</h4> */}
-              <img className="main-logo" src="img/logo/logo.png" alt="" />
+              <img className="main-logo" src="img/logo/logoo.jpeg" alt="" style={{width:"5rem",height:"5rem"}}/>
             </a>
-            <strong>
-              <img src="img/user-img-1.png" alt="" />
-            </strong>
           </div>
           <div className="nalika-profile">
             <div className="profile-dtl">

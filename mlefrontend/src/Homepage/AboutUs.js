@@ -47,7 +47,7 @@ const AboutUs = () => {
                 <div class="col-lg-8 text-center text-lg-left">
 
                     <h1 class="text-white mb-4">
-                    JLE is an attempt to give tier 2 city the feel of e-commerce with a MLM benefits.
+                    JLE is an attempt to give tier 2 city the feel of e-commerce.
 
                     </h1>
 
@@ -84,7 +84,7 @@ const AboutUs = () => {
                         </a>
                        
                         <p className="mt-4 text-sm opacity-8 pr-lg-4">
-                            JLE is an attempt to give tier 2 city the feel of e-commerce with a MLM benefits.
+                            JLE is an attempt to give tier 2 city the feel of e-commerce.
 
                         </p>
                       

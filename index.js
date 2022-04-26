@@ -51,4 +51,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(3001, console.log("Server started"));
+app.listen(3000, console.log("Server started"));

@@ -95,14 +95,28 @@ const Sider = () => {
   return (
     <>
       <div className="left-sidebar-pro side_bar">
-        <nav id="sidebar" className="">
-          <div className="sidebar-header">
+        <nav
+          id="sidebar"
+          className=""
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "12%",
+            height: "100%",
+          }}
+        >
+          <div className="sidebar-header" style={{ height: "15%" }}>
             <a href={"/"}>
               {/* <h4 style={{ color: "white" }}>JLE</h4> */}
-              <img className="main-logo" src="img/logo/logoo.jpeg" alt="" style={{width:"5rem",height:"5rem"}}/>
+              <img
+                className="main-logo"
+                src="img/logo/logo.png"
+                alt=""
+                style={{ width: "5rem", height: "5rem" }}
+              />
             </a>
           </div>
-          <div className="nalika-profile">
+          <div className="nalika-profile" style={{ height: "18%" }}>
             <div className="profile-dtl">
               <a href="#">
                 <img src="img/user-img-1.png" alt="" />
@@ -110,7 +124,10 @@ const Sider = () => {
               <h2>{userInfo ? userInfo.name : ""}</h2>
             </div>
           </div>
-          <div className="left-custom-menu-adp-wrap comment-scrollbar">
+          <div
+            className="left-custom-menu-adp-wrap "
+            style={{ overflowY: "auto", position: "relative", height: "65%" }}
+          >
             <nav className="sidebar-nav left-sidebar-menu-pro">
               <ul className="metismenu" id="menu1">
                 {userInfo && userInfo.userType == "admin" ? (

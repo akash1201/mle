@@ -281,7 +281,37 @@ const getVendors = asyncHandler( async (req, res)=>{
     let vendors = await User.find({userType : 'vendor'}, {password : 0});
     res.json(vendors);
 })
+
+const countDL = async  (user, count) => {
+   let users = await User.find({parentId : user._id});
+   if(users.length !=0){
+         for(let i=0; i<users.length; ++i){
+             ++count;
+            count = await countDL(users[i], count)
+         }
+   }
+   return count;
+}
+
+const getUserCount = asyncHandler (async (req, res)=>{
+   
+    let token = req.headers.authorization.split(' ')[1]
+    let userid = jwt.verify(token, process.env.JWT_SECRET)
+
+    let users = await User.find({parentId : userid.id});
+    let directDL = users.length;
+
+    let allDL = 0;
+    if(users.length != 0){
+        for(let i=0; i<users.length; ++i){
+        ++allDL;
+        allDL = await countDL(users[i], allDL);
+    }
+}
+res.json({directDL : directDL, allDL : allDL, totalEarning : 0, thisMonth : 0})
+})
 export {
+    getUserCount,
     getVendors,
     getUsers,
     addUser,

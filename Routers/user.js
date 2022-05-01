@@ -9,7 +9,8 @@ import { registerUser,
           generateBill,
           addUser,
           getUsers,
-          getVendors
+          getVendors,
+          getUserCount
 } from '../Controllers/user.js'
 import {protect, admin, vendor} from '../middleware/authMiddleware.js'
 
@@ -26,5 +27,7 @@ router.post(`/generate-bill`, protect, vendor, generateBill);
 router.post(`/add-user`, protect, admin, addUser);
 router.get(`/get-users`, protect, admin, getUsers);
 router.get(`/get-vendors`, protect, admin, getVendors);
+
+router.get(`/get-users-count`, protect, getUserCount)
 
 export default router

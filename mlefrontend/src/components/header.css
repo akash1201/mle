@@ -1,0 +1,18 @@
+.hamburger_menu {
+  display: none;
+  position: relative;
+  margin-left: 80vw;
+}
+
+@media (max-width: 992px) {
+  .hamburger_menu {
+    display: block;
+  }
+}
+
+@media (max-width: 992px) {
+  .side_menu {
+    transform: translate(200px, 200px);
+    display: block;
+  }
+}

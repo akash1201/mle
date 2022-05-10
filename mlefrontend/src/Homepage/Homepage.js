@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import Slider from "react-slick";
+import slide1 from "./JLE1.png";
+import slide2 from "./JLE2.png";
+import slide3 from "./JLE3.png";
+import jle11 from "./jle11.png";
+import jle12 from "./jle12.png";
+import jle13 from "./jle13.png";
+import jle14 from "./jle14.png";
+import jle15 from "./jle15.png";
+import jle16 from "./jle16.png";
+import img1 from "./about.png";
 import "./landingpage.css";
 
 const Homepage = () => {
@@ -11,8 +20,8 @@ const Homepage = () => {
   ]);
 
   return (
-    <div>
-      <div className="container-fluid">
+    <div style={{ width: "100%", height: "100%" }}>
+      <div className="container-fluid" style={{ width: "100%", padding: "0" }}>
         <div className="headerLanding">
           <a href="#default" className="logo">
             <img
@@ -22,8 +31,8 @@ const Homepage = () => {
               style={{ width: "5rem", height: "5rem" }}
             />
           </a>
-          <div className="headerLanding-right">
-            <Link
+          {/* <div className="headerLanding-right"> */}
+          {/* <Link
               className="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3"
               to="/login"
             >
@@ -34,11 +43,41 @@ const Homepage = () => {
               to="/"
             >
               Register
-            </Link>
-          </div>
+            </Link> */}
+          <nav
+            className="navbar navbar-expand-lg navbar-light bg-light headerLanding-right"
+            style={{ marginBottom: "0" }}
+          >
+            <div
+              className="collapse navbar-collapse"
+              id="navbarNavAltMarkup"
+              style={{ width: "100%" }}
+            >
+              <div className="navbar-nav">
+                <Link
+                  to="/login"
+                  className="nav-item nav-link"
+                  href="#"
+                  style={{ fontWeight: "900", color: "navy" }}
+                >
+                  LOGIN<span className="sr-only">(current)</span>
+                </Link>
+                <a
+                  className="nav-item nav-link"
+                  href="#"
+                  style={{ fontWeight: "900", color: "navy" }}
+                >
+                  REGISTER
+                </a>
+              </div>
+            </div>
+          </nav>
         </div>
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav
+          className="navbar navbar-expand-lg navbar-light bg-light"
+          style={{ marginBottom: "0" }}
+        >
           <button
             className="navbar-toggler"
             type="button"
@@ -52,22 +91,35 @@ const Homepage = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-item nav-link" href="#">
-                About<span className="sr-only">(current)</span>
+              <a
+                className="nav-item nav-link"
+                href="#"
+                style={{ fontWeight: "900", color: "navy" }}
+              >
+                ABOUT<span className="sr-only">(current)</span>
               </a>
-              <a className="nav-item nav-link" href="#">
-                Download
+              <a
+                className="nav-item nav-link"
+                href="#"
+                style={{ fontWeight: "900", color: "navy" }}
+              >
+                DOWNLOAD
               </a>
-              <a className="nav-item nav-link" href="#">
-                Startup Business
+              <a
+                className="nav-item nav-link"
+                href="#"
+                style={{ fontWeight: "900", color: "navy" }}
+              >
+                START A BUSINESS
               </a>
             </div>
           </div>
         </nav>
         <div
           id="carouselExampleIndicators"
-          className="carousel slide"
+          className="carousel slide card-slider"
           data-ride="carousel"
+          style={{ marginTop: "0" }}
         >
           <ol className="carousel-indicators">
             <li
@@ -79,26 +131,14 @@ const Homepage = () => {
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
           <div className="carousel-inner">
-            <div className="carousel-item active" style={{ height: "30rem" }}>
-              <img
-                className="d-block w-100"
-                src="https://images.unsplash.com/photo-1591586116988-62fe65164f8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80"
-                alt="First slide"
-              />
+            <div className="carousel-item active ">
+              <img className="d-block w-100" src={slide1} alt="First slide" />
             </div>
-            <div className="carousel-item" style={{ height: "30rem" }}>
-              <img
-                className="d-block w-100"
-                src="https://images.unsplash.com/photo-1546209705-a7eba4e8da21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
-                alt="Second slide"
-              />
+            <div className="carousel-item ">
+              <img className="d-block w-100" src={slide2} alt="Second slide" />
             </div>
-            <div className="carousel-item" style={{ height: "30rem" }}>
-              <img
-                className="d-block w-100"
-                src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="Third slide"
-              />
+            <div className="carousel-item ">
+              <img className="d-block w-100" src={slide3} alt="Third slide" />
             </div>
           </div>
           <a
@@ -128,11 +168,13 @@ const Homepage = () => {
         </div>
       </div>
 
-      <section className="pt-5 pb-5">
+      <section className="pt-5 pb-5 our-products">
         <div className="container-fluid">
           <div className="row">
             <div className="col-6">
-              <h3 className="mb-3">Our Products</h3>
+              <h2 className="mb-3" style={{ fontWeight: "900", color: "navy" }}>
+                OUR PRODUCTS
+              </h2>
             </div>
             <div className="col-6 text-right">
               <a
@@ -162,69 +204,41 @@ const Homepage = () => {
                   <div className="carousel-item active">
                     <div className="row">
                       <div className="col-md-4 mb-3">
-                        <div className="card">
+                        <div className="card" style={{ padding: "2rem" }}>
                           <img
                             className="img-fluid"
                             alt="100%x280"
-                            src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                            src={jle11}
                           />
                           <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
+                            <h4 className="card-title">Dry Fruits & Nuts</h4>
                           </div>
                         </div>
                       </div>
 
                       <div className="col-md-4 mb-3">
-                        <div className="card">
+                        <div className="card" style={{ padding: "2rem" }}>
                           <img
                             className="img-fluid"
                             alt="100%x280"
-                            src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                            src={jle12}
                           />
                           <div className="card-body">
                             <h4 className="card-title">
-                              Special title treatment
+                              Cold Pressed Olive Oil
                             </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-4 mb-3">
-                        <div className="card">
+                        <div className="card" style={{ padding: "2rem" }}>
                           <img
                             className="img-fluid"
                             alt="100%x280"
-                            src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            src={jle13}
                           />
                           <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
+                            <h4 className="card-title">Premium Sugar</h4>
                           </div>
                         </div>
                       </div>
@@ -233,138 +247,38 @@ const Homepage = () => {
                   <div className="carousel-item">
                     <div className="row">
                       <div className="col-md-4 mb-3">
-                        <div className="card">
+                        <div className="card" style={{ padding: "2rem" }}>
                           <img
                             className="img-fluid"
                             alt="100%x280"
-                            src="https://images.unsplash.com/photo-1557844352-761f2565b576?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            src={jle14}
                           />
                           <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
+                            <h4 className="card-title">Dal & Pulses</h4>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-4 mb-3">
-                        <div className="card">
+                        <div className="card" style={{ padding: "2rem" }}>
                           <img
                             className="img-fluid"
                             alt="100%x280"
-                            src="https://images.unsplash.com/photo-1557844352-761f2565b576?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            src={jle15}
                           />
                           <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
+                            <h4 className="card-title">Basmati Rice</h4>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-4 mb-3">
-                        <div className="card">
+                        <div className="card" style={{ padding: "2rem" }}>
                           <img
                             className="img-fluid"
                             alt="100%x280"
-                            src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                            src={jle16}
                           />
                           <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    <div className="row">
-                      <div className="col-md-4 mb-3">
-                        <div className="card">
-                          <img
-                            className="img-fluid"
-                            src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                            alt="100%x280"
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mb-3">
-                        <div className="card">
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src="https://images.unsplash.com/photo-1546209705-a7eba4e8da21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mb-3">
-                        <div className="card">
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src="https://images.unsplash.com/photo-1557844352-761f2565b576?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">
-                              Special title treatment
-                            </h4>
-                            <p className="card-text">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries.
-                            </p>
+                            <h4 className="card-title">Red Chilli Powder</h4>
                           </div>
                         </div>
                       </div>
@@ -377,16 +291,28 @@ const Homepage = () => {
         </div>
       </section>
 
-      <section className="my-5">
+      <section
+        className="my-5 about-us"
+        style={{
+          boxShadow:
+            "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;",
+        }}
+      >
         <div className="py-5">
-          <h3 className="text-center">About Us</h3>
+          <h2
+            className="text-center"
+            style={{ fontWeight: "900", color: "navy" }}
+          >
+            ABOUT US
+          </h2>
         </div>
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-6 col-md-6 col-12 ">
               <img
-                src="https://images.unsplash.com/photo-1635341083777-5f93a755e916?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                src={img1}
                 className="img-fluid aboutimg"
+                style={{ width: "100%", height: "70%" }}
               />
             </div>
 
@@ -395,11 +321,10 @@ const Homepage = () => {
                 JLE is an attempt to give tier 2 city the feel of e-commerce. !
               </h3>
               <p className="py-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries.
+                We give homedelivery of grocery items, where you can get
+                cashbacks and exicting prizes . Get deliver everything at your
+                doorstep ,also you can join us for more discounts and more
+                earning opputunities.
               </p>
               <a href="about.php" className="btn btn-primary">
                 Check More
@@ -408,78 +333,82 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+      <footer
+        className="position-relative"
+        id="footer-main"
+        style={{ backgroundColor: "#171347" }}
+      >
+        <div className="container pt-4">
+          <div className="row">
+            <div className="col-lg-4 mb-5 mb-lg-0">
+              <a href="index.html">
+                <span>
+                  <h3 style={{ color: "white" }}>
+                    <span style={{ color: "#7ac81e" }}>JLE </span>Megamart
+                  </h3>
+                </span>
+              </a>
 
-      {/* <div className="position-relative" id="footer-main">
-          <div className="footer pt-lg-7 footer-primary">
-            <div className="container pt-3">
-              <div className="row">
-                <div className="col-lg-6 mb-6 mb-lg-0">
-                  <span>
-                    <h3 style="color: white">
-                      <span style="color: #ffffff">Gravity</span>Bites
-                    </h3>
-                  </span>
-                </div>
+              <p className="mt-4 text-sm opacity-8 pr-lg-4">
+                JLE is an attempt to give tier-2 city the feel of e-commerce.
+              </p>
 
-                <div className="col-lg-3 col-6 col-sm-4 mb-5 mb-lg-0">
-                  <h6 className="heading mb-3">
-                    <b>Company</b>
-                  </h6>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a href="#">Blog</a>
-                    </li>
-                    <li>
-                      <a href="#">Privacy Policy</a>
-                    </li>
-                    <li>
-                      <a href="#">Term and Condition</a>
-                    </li>
-                    <li>
-                      <a href="#">Newslatter</a>
-                    </li>
-                    <li>
-                      <a href="#">Cookies</a>
-                    </li>
-                  </ul>
-                </div>
+              <ul className="nav mt-4">
+                <li className="nav-item">
+                  <a className="nav-link" href="#" target="_blank">
+                    <i className="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#" target="_blank">
+                    <i className="fab fa-facebook"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-                <div className="col-lg-3 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
-                  <h6 className="heading mb-3">
-                    <b>Social Media</b>
-                  </h6>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a href="#">Facebook</a>
-                    </li>
-                    <li>
-                      <a href="#">Instagram</a>
-                    </li>
-                    <li>
-                      <a href="#">Twitter</a>
-                    </li>
-                    <li>
-                      <a href="#">YouTube</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <hr className="divider divider-fade divider-dark my-4" />
-              <div className="row align-items-center justify-content-md-between pb-4">
-                <div className="col-md-6">
-                  <div className="copyright text-sm font-weight-bold text-center text-md-left">
-                    &copy; 2022{" "}
-                    <a href="#" target="_blank">
-                      GravityBites
-                    </a>
-                    . All rights reserved
-                  </div>
-                </div>
+            <div className="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0"></div>
+            <div className="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0"></div>
+            <div className="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0"></div>
+          </div>
+          <hr className="divider divider-fade divider-dark my-4" />
+          <div className="row align-items-center justify-content-md-between pb-4">
+            <div className="col-md-6">
+              <div className="copyright text-sm font-weight-bold text-center text-md-left">
+                &copy; 2022{" "}
+                <a href="#" className="font-weight-bold" target="_blank">
+                  JLE Megamart
+                </a>
+                . All rights reserved
               </div>
             </div>
+            <div className="col-md-6">
+              <ul className="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/terms-and-conditions">
+                    Terms
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/privacy-policy">
+                    Privacy
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/refund">
+                    Refund
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about-us">
+                    About Us
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div> */}
-      <Footer />
+        </div>
+      </footer>
     </div>
   );
 };

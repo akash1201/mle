@@ -2,7 +2,8 @@
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  background-color: #0047ab;
+  background-color: #eaecf3;
+  border-bottom: 2px solid black;
 }
 .logo {
   /* float: left; */
@@ -34,6 +35,9 @@
   background-color: dodgerblue;
   color: white;
 }
+.card-column {
+  padding: 3rem;
+}
 
 .headerLanding-right {
   width: 50%;
@@ -43,23 +47,33 @@
   justify-content: space-around;
 }
 .card-slider {
-  height: 35rem;
+  height: 40rem;
 }
 
 @media screen and (max-width: 400px) {
+  .hamburger-button {
+    margin-left: 250px;
+  }
+  .logo {
+    margin-left: -250px;
+  }
   .card-slider {
     height: 12rem;
   }
   .about-us {
-    height: 49rem;
+    height: 55rem;
   }
   .our-products {
     height: 98rem;
   }
   .headerLanding {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
+  }
+  .card-column {
+    padding-bottom: 1rem;
   }
 
   .headerLanding a {

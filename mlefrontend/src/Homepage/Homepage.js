@@ -11,6 +11,7 @@ import jle14 from "./jle14.png";
 import jle15 from "./jle15.png";
 import jle16 from "./jle16.png";
 import img1 from "./about.png";
+import logo from "./logo.png";
 import "./landingpage.css";
 
 const Homepage = () => {
@@ -26,7 +27,7 @@ const Homepage = () => {
           <a href="#default" className="logo">
             <img
               className="main-logo"
-              src="img/logo/logo.png"
+              src={logo}
               alt=""
               style={{ width: "5rem", height: "5rem" }}
             />
@@ -56,16 +57,26 @@ const Homepage = () => {
               <div className="navbar-nav">
                 <Link
                   to="/login"
-                  className="nav-item nav-link"
+                  className="nav-item nav-link "
                   href="#"
-                  style={{ fontWeight: "900", color: "navy" }}
+                  style={{
+                    fontWeight: "900",
+                    color: "navy",
+                    color: "#7ac81e",
+                    fontSize: "1.5rem",
+                  }}
                 >
                   LOGIN<span className="sr-only">(current)</span>
                 </Link>
                 <a
                   className="nav-item nav-link"
                   href="#"
-                  style={{ fontWeight: "900", color: "navy" }}
+                  style={{
+                    fontWeight: "900",
+                    color: "navy",
+                    color: "#7ac81e",
+                    fontSize: "1.5rem",
+                  }}
                 >
                   REGISTER
                 </a>
@@ -79,7 +90,7 @@ const Homepage = () => {
           style={{ marginBottom: "0" }}
         >
           <button
-            className="navbar-toggler"
+            className="navbar-toggler hamburger-button"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNavAltMarkup"
@@ -203,8 +214,14 @@ const Homepage = () => {
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <div className="row">
-                      <div className="col-md-4 mb-3">
-                        <div className="card" style={{ padding: "2rem" }}>
+                      <div className="col-md-4 mb-3 card-column">
+                        <div
+                          className="card"
+                          style={{
+                            boxShadow:
+                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                          }}
+                        >
                           <img
                             className="img-fluid"
                             alt="100%x280"
@@ -215,9 +232,14 @@ const Homepage = () => {
                           </div>
                         </div>
                       </div>
-
-                      <div className="col-md-4 mb-3">
-                        <div className="card" style={{ padding: "2rem" }}>
+                      <div className="col-md-4 mb-3 card-column">
+                        <div
+                          className="card"
+                          style={{
+                            boxShadow:
+                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                          }}
+                        >
                           <img
                             className="img-fluid"
                             alt="100%x280"
@@ -230,8 +252,14 @@ const Homepage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-4 mb-3">
-                        <div className="card" style={{ padding: "2rem" }}>
+                      <div className="col-md-4 mb-3 card-column">
+                        <div
+                          className="card"
+                          style={{
+                            boxShadow:
+                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                          }}
+                        >
                           <img
                             className="img-fluid"
                             alt="100%x280"
@@ -246,8 +274,14 @@ const Homepage = () => {
                   </div>
                   <div className="carousel-item">
                     <div className="row">
-                      <div className="col-md-4 mb-3">
-                        <div className="card" style={{ padding: "2rem" }}>
+                      <div className="col-md-4 mb-3 card-column">
+                        <div
+                          className="card"
+                          style={{
+                            boxShadow:
+                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                          }}
+                        >
                           <img
                             className="img-fluid"
                             alt="100%x280"
@@ -258,8 +292,14 @@ const Homepage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-4 mb-3">
-                        <div className="card" style={{ padding: "2rem" }}>
+                      <div className="col-md-4 mb-3 card-column">
+                        <div
+                          className="card"
+                          style={{
+                            boxShadow:
+                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                          }}
+                        >
                           <img
                             className="img-fluid"
                             alt="100%x280"
@@ -270,8 +310,14 @@ const Homepage = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-4 mb-3">
-                        <div className="card" style={{ padding: "2rem" }}>
+                      <div className="col-md-4 mb-3 card-column">
+                        <div
+                          className="card"
+                          style={{
+                            boxShadow:
+                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                          }}
+                        >
                           <img
                             className="img-fluid"
                             alt="100%x280"
@@ -312,7 +358,7 @@ const Homepage = () => {
               <img
                 src={img1}
                 className="img-fluid aboutimg"
-                style={{ width: "100%", height: "70%" }}
+                style={{ width: "100%", height: "85%" }}
               />
             </div>
 
@@ -326,6 +372,13 @@ const Homepage = () => {
                 doorstep ,also you can join us for more discounts and more
                 earning opputunities.
               </p>
+              <p>
+                At JLE MEGA MART, we value our customers so much that we have
+                engrained our customer service into our core values. Everything
+                we do stems from our desire to make shopping at JLE MEGA MART
+                the best shopping experience you can get anywhere. If there is
+                anything we can do to better serve you, please let us know.
+              </p>
               <a href="about.php" className="btn btn-primary">
                 Check More
               </a>
@@ -336,7 +389,7 @@ const Homepage = () => {
       <footer
         className="position-relative"
         id="footer-main"
-        style={{ backgroundColor: "#171347" }}
+        style={{ backgroundColor: "navy" }}
       >
         <div className="container pt-4">
           <div className="row">
@@ -349,7 +402,10 @@ const Homepage = () => {
                 </span>
               </a>
 
-              <p className="mt-4 text-sm opacity-8 pr-lg-4">
+              <p
+                className="mt-4 text-sm opacity-8 pr-lg-4"
+                style={{ color: "white" }}
+              >
                 JLE is an attempt to give tier-2 city the feel of e-commerce.
               </p>
 
@@ -374,9 +430,17 @@ const Homepage = () => {
           <hr className="divider divider-fade divider-dark my-4" />
           <div className="row align-items-center justify-content-md-between pb-4">
             <div className="col-md-6">
-              <div className="copyright text-sm font-weight-bold text-center text-md-left">
+              <div
+                className="copyright text-sm font-weight-bold text-center text-md-left"
+                style={{ color: "white" }}
+              >
                 &copy; 2022{" "}
-                <a href="#" className="font-weight-bold" target="_blank">
+                <a
+                  href="#"
+                  className="font-weight-bold"
+                  target="_blank"
+                  style={{ color: "#7ac81e" }}
+                >
                   JLE Megamart
                 </a>
                 . All rights reserved
@@ -385,22 +449,38 @@ const Homepage = () => {
             <div className="col-md-6">
               <ul className="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/terms-and-conditions">
+                  <Link
+                    className="nav-link"
+                    to="/terms-and-conditions"
+                    style={{ color: "#7ac81e" }}
+                  >
                     Terms
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/privacy-policy">
+                  <Link
+                    className="nav-link"
+                    to="/privacy-policy"
+                    style={{ color: "#7ac81e" }}
+                  >
                     Privacy
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/refund">
+                  <Link
+                    className="nav-link"
+                    to="/refund"
+                    style={{ color: "#7ac81e" }}
+                  >
                     Refund
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about-us">
+                  <Link
+                    className="nav-link"
+                    to="/about-us"
+                    style={{ color: "#7ac81e" }}
+                  >
                     About Us
                   </Link>
                 </li>

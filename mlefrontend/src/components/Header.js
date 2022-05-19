@@ -4,17 +4,17 @@ import "./header.css";
 const Header = ({ handleToggle }) => {
   return (
     <>
-      <div className="container-fluid">
+      {/* (<div className="container-fluid">
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div className="logo-pro">
               <a href="index.html">
-                {/* <img className="main-logo" src="img/logo/logoo.jpeg" alt="" /> */}
+                {/* <img className="main-logo" src="img/logo/logoo.jpeg" alt="" /> 
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </div>) */}
 
       {/* Header */}
 
@@ -62,6 +62,16 @@ const Header = ({ handleToggle }) => {
                             <span className="bread-ntd">Dashboard</span>
                           </p>
                         </div>
+                        {/* <div className="menu-switcher-pro hamburger_menu">
+                          <button
+                            type="button"
+                            id="sidebarCollapse"
+                            className="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn "
+                            onClick={handleToggle}
+                          >
+                            <i className="icon nalika-menu-task"></i>
+                          </button>
+                        </div> */}
                       </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">

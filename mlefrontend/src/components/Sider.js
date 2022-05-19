@@ -46,6 +46,22 @@ const Sider = () => {
       vendor: false,
     },
     {
+      name: "Summary",
+      icon: "fas fa-cog",
+      path: "/membership-benefits",
+      admin: true,
+      user: true,
+      vendor: false,
+    },
+    {
+      name: "Income Statement",
+      icon: "fas fa-cog",
+      path: "/membership-benefits",
+      admin: true,
+      user: true,
+      vendor: false,
+    },
+    {
       name: "Vendor Management",
       icon: "fas fa-cog",
       path: "/vendor-management",

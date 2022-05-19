@@ -7,6 +7,7 @@ import GenerateRpin from "./screens/GenerateRpin";
 import MyDashboard from "./screens/MyDashboard";
 import AddDownline from "./screens/AddDownline";
 import Home from "./screens/Home";
+import UpdateUser from "./screens/UpdateUser";
 import CashBack from "./AdminScreens/CashBack";
 import VendorManagement from "./screens/VendorManagement";
 import AddVendor from "./screens/AddVendor";
@@ -31,6 +32,7 @@ function App() {
       <Route path="/" element={<Homepage />} />
       {/* <Route index component={Home}/> */}
       <Route path="dashboard" element={<Home />} />
+      <Route path="updateUser" element={<UpdateUser />} />
       <Route path="login" element={<LoginScreen />} />
       <Route path="generate-rpin" element={<GenerateRpin />}>
         <Route path=":success/:orderId" element={<GenerateRpin />} />

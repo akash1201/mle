@@ -1,32 +1,30 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
+const BillSchema = mongoose.Schema(
+  {
+    issuedTo: {
+      type: String,
+      required: true,
+    },
+    issuedBy: {
+      type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    details: [],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const BillSchema = mongoose.Schema({
-
-     issuedTo : {
-               type : String,
-               required : true
-     },
-     issuedBy : {
-               type : String,
-               required : true
-     },
-     amount : {
-               type : Number,
-               required : true
-     },
-     category : {
-               type : String,
-               required : true
-     },
-     details : []
-},
-          {
-          timestamps: true,
-        }
-)
-
-
-const Bill = mongoose.model('Bill', BillSchema)
+const Bill = mongoose.model("Bill", BillSchema);
 
 export default Bill;

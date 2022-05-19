@@ -16,6 +16,8 @@ const Home = () => {
   let navigate = useNavigate();
 
   const [uid, setUid] = useState(() => "");
+  const [bankAccountNo, setBankAccountNo] = useState(() => "");
+  const [bankIfsc, setBankIfsc] = useState(() => "");
   const [name, setName] = useState(() => "");
   const [designation, setDesignation] = useState(() => "");
   const [phoneNo, setPhoneNo] = useState(() => "");
@@ -24,11 +26,14 @@ const Home = () => {
   const [dist, setDist] = useState(() => "");
   const [state, setState] = useState(() => "");
   const [pin, setPin] = useState(() => "");
+  const [aadharNo, setAadharNo] = useState(() => "");
+  const [panNo, setPanNo] = useState(() => "");
   const [rpin, setRpin] = useState(() => "");
   const [password, setPassword] = useState(() => "");
   const [cpassword, setCpassword] = useState(() => "");
   const [loading, setLoading] = useState(() => true);
   const [toggle, setToggle] = useState(true);
+  const [update, setUpdate] = useState(false);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -54,6 +59,10 @@ const Home = () => {
               setDist(user.address.district);
               setState(user.address.state);
               setPin(user.address.pin);
+              setBankAccountNo(user.bankAccountNo);
+              setBankIfsc(user.bankIfsc);
+              setAadharNo(user.aadharNo);
+              setPanNo(user.panNo);
             }
             setLoading(false);
           }
@@ -68,6 +77,10 @@ const Home = () => {
       document.location.href = "/login";
     }
   }, []);
+
+  const updateRoute = () => {
+    navigate("/updateUser");
+  };
 
   return (
     <>
@@ -124,6 +137,42 @@ const Home = () => {
                               <Form.Control
                                 type="text"
                                 value={name}
+                                disabled
+                                style={{
+                                  backgroundColor: "gray",
+                                  color: "white",
+                                }}
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md={6}>
+                            <Form.Group
+                              className="mb-3"
+                              controlId="formBasicEmail"
+                            >
+                              <Form.Label>Pan No.</Form.Label>
+                              <Form.Control
+                                value={panNo}
+                                disabled
+                                type="text"
+                                style={{
+                                  backgroundColor: "gray",
+                                  color: "white",
+                                }}
+                              />
+                            </Form.Group>
+                          </Col>
+                          <Col md={6}>
+                            <Form.Group
+                              className="mb-3"
+                              controlId="formBasicEmail"
+                            >
+                              <Form.Label>Aadhar No.</Form.Label>
+                              <Form.Control
+                                type="text"
+                                value={aadharNo}
                                 disabled
                                 style={{
                                   backgroundColor: "gray",
@@ -283,11 +332,49 @@ const Home = () => {
                             </Form.Group>
                           </Col>
                         </Row>
+                        <Row>
+                          <Col md={6}>
+                            <Form.Group
+                              className="mb-3"
+                              controlId="formBasicEmail"
+                            >
+                              <Form.Label>Bank Account No</Form.Label>
+                              <Form.Control
+                                type="text"
+                                value={bankAccountNo}
+                                disabled
+                                style={{
+                                  backgroundColor: "gray",
+                                  color: "white",
+                                }}
+                              />
+                            </Form.Group>
+                          </Col>
+                          <Col md={6}>
+                            <Form.Group
+                              className="mb-3"
+                              controlId="formBasicEmail"
+                            >
+                              <Form.Label>Bank IFSC</Form.Label>
+                              <Form.Control
+                                type="text"
+                                value={bankIfsc}
+                                disabled
+                                style={{
+                                  backgroundColor: "gray",
+                                  color: "white",
+                                }}
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
 
                         <Row style={{ marginBottom: "2%" }}>
                           <Col></Col>
                           <Col>
-                            <Button variant="primary">Update</Button>
+                            <Button variant="primary" onClick={updateRoute}>
+                              Update
+                            </Button>
                           </Col>
                           <Col></Col>
                         </Row>

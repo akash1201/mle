@@ -355,7 +355,7 @@ const AddDownline = () => {
                                         }
                                   }
                                 >
-                                  {i == (details.length - 1) ? (
+                                  {i == details.length - 1 ? (
                                     <i className={`fas fa-plus`}></i>
                                   ) : (
                                     <i className="fa fa-minus"></i>

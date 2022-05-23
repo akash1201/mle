@@ -47,31 +47,60 @@
   justify-content: space-around;
 }
 .card-slider {
-  height: 40rem;
+  height: 45rem;
 }
 
+@media screen and (max-width: 900px) {
+  .our-products {
+    height: 36rem;
+  }
+  .card-slider {
+    height: 28rem;
+  }
+  .about-us {
+    height: 70rem;
+  }
+  .card-style {
+    margin-left: 8rem;
+    width: 25rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .headerLanding {
+    display: none;
+  }
+}
 @media screen and (max-width: 400px) {
   .hamburger-button {
     margin-left: 250px;
   }
+  .our-products {
+    height: 32rem;
+  }
+  .card-style {
+    margin-left: 3rem;
+    width: 16rem;
+  }
+  .about-us {
+    height: 60rem;
+  }
+  .card-slider {
+    height: 15rem;
+  }
+
   .logo {
     margin-left: -250px;
   }
-  .card-slider {
-    height: 12rem;
-  }
-  .about-us {
-    height: 55rem;
-  }
-  .our-products {
-    height: 98rem;
-  }
+
   .headerLanding {
+    display: none;
+  }
+  /* .headerLanding {
     display: flex;
 
     flex-direction: column;
     justify-content: center;
-  }
+  } */
   .card-column {
     padding-bottom: 1rem;
   }

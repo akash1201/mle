@@ -61,7 +61,9 @@ const LoginScreen = ({ match }) => {
           <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
           <div className="col-md-4 col-md-4 col-sm-4 col-xs-12">
             <div className="text-center m-b-md custom-login">
-              <h3 style={{ color: "white" }}>PLEASE LOGIN TO JLE Dashboard</h3>
+              <h3 style={{ color: "black", fontWeight: "700" }}>
+                PLEASE LOGIN TO JLE Dashboard
+              </h3>
             </div>
             <div className="hpanel">
               <div className="panel-body">

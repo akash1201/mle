@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import menu from "./menu-down.svg";
+import "./homepage.css";
+import person from "./person.svg";
 import Footer from "../components/Footer";
 import slide1 from "./JLE1.png";
 import slide2 from "./JLE2.png";
+import slide4 from "./JLE4.png";
 import slide3 from "./JLE3.png";
 import jle11 from "./jle11.png";
 import jle12 from "./jle12.png";
@@ -12,6 +16,7 @@ import jle15 from "./jle15.png";
 import jle16 from "./jle16.png";
 import img1 from "./about.png";
 import logo from "./logo.png";
+import search from "./search.svg";
 import "./landingpage.css";
 
 const Homepage = () => {
@@ -23,6 +28,106 @@ const Homepage = () => {
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <div className="container-fluid" style={{ width: "100%", padding: "0" }}>
+        <div className="headerShow">
+          <div className="logo-link">
+            <nav
+              className="navbar navbar-expand-lg navbar-light bg-light "
+              style={{ marginBottom: "0", padding: "0" }}
+            >
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                style={{ width: "100%", height: "100%" }}
+              >
+                {/* <img src={menu} style={{ width: "100%", height: "100%" }} /> */}
+                <span className="navbar-toggler-icon bg-light"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                  <a
+                    className="nav-item nav-link"
+                    href="#"
+                    style={{ fontWeight: "900", color: "navy" }}
+                  >
+                    ABOUT<span className="sr-only">(current)</span>
+                  </a>
+                  <a
+                    className="nav-item nav-link"
+                    href="https://drive.google.com/drive/folders/1I1bAta_WLMFjNi-dkz_nSxQ20VUJ6pgX?usp=sharing"
+                    style={{ fontWeight: "900", color: "navy" }}
+                  >
+                    DOWNLOAD
+                  </a>
+                  <a
+                    className="nav-item nav-link"
+                    href="#"
+                    style={{ fontWeight: "900", color: "navy" }}
+                  >
+                    START A BUSINESS
+                  </a>
+                </div>
+              </div>
+            </nav>
+            <img
+              className="main-logo"
+              src={logo}
+              alt=""
+              style={{ height: "3.5rem", width: "5rem" }}
+            />
+          </div>
+          <div className="nav-link">
+            <nav
+              className="navbar navbar-expand-lg navbar-light bg-navy login-nav "
+              style={{
+                marginBottom: "0",
+                padding: "0",
+              }}
+            >
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavAltMarkup1"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                style={{ width: "100%", height: "100%" }}
+              >
+                <img src={person} style={{ width: "100%", height: "100%" }} />
+              </button>
+              <div
+                className="collapse navbar-collapse"
+                id="navbarNavAltMarkup1"
+              >
+                <div className="navbar-nav">
+                  <a
+                    className="nav-item nav-link"
+                    href="#"
+                    style={{ fontWeight: "900", color: "navy" }}
+                  >
+                    Login<span className="sr-only">(current)</span>
+                  </a>
+
+                  <a
+                    className="nav-item nav-link"
+                    href="#"
+                    style={{ fontWeight: "900", color: "navy" }}
+                  >
+                    Register
+                  </a>
+                </div>
+              </div>
+            </nav>
+            <a style={{ padding: "0.7rem" }}>
+              <img src={search} style={{ width: "100%", height: "100%" }} />
+            </a>
+          </div>
+        </div>
         <div className="headerLanding">
           <a href="#default" className="logo">
             <img
@@ -46,50 +151,74 @@ const Homepage = () => {
               Register
             </Link> */}
           <nav
-            className="navbar navbar-expand-lg navbar-light bg-light headerLanding-right"
+            className="navbar navbar-expand-lg navbar-light bg-light headerLanding-right nav-hide"
             style={{ marginBottom: "0" }}
           >
-            <div
+            <div className="navbar-nav">
+              <Link
+                to="/login"
+                className="nav-item nav-link "
+                href="#"
+                style={{
+                  fontWeight: "900",
+                  color: "navy",
+                  color: "#7ac81e",
+                  fontSize: "1.5rem",
+                }}
+              >
+                LOGIN<span className="sr-only">(current)</span>
+              </Link>
+              <a
+                className="nav-item nav-link"
+                href="#"
+                style={{
+                  fontWeight: "900",
+                  color: "navy",
+                  color: "#7ac81e",
+                  fontSize: "1.5rem",
+                }}
+              >
+                REGISTER
+              </a>
+            </div>
+            {/* <div
               className="collapse navbar-collapse"
               id="navbarNavAltMarkup"
               style={{ width: "100%" }}
             >
-              <div className="navbar-nav">
-                <Link
-                  to="/login"
-                  className="nav-item nav-link "
-                  href="#"
-                  style={{
-                    fontWeight: "900",
-                    color: "navy",
-                    color: "#7ac81e",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  LOGIN<span className="sr-only">(current)</span>
-                </Link>
-                <a
-                  className="nav-item nav-link"
-                  href="#"
-                  style={{
-                    fontWeight: "900",
-                    color: "navy",
-                    color: "#7ac81e",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  REGISTER
-                </a>
-              </div>
-            </div>
+
+            </div> */}
           </nav>
         </div>
 
         <nav
-          className="navbar navbar-expand-lg navbar-light bg-light"
+          className="navbar navbar-expand-lg navbar-light bg-light nav-hide"
           style={{ marginBottom: "0" }}
         >
-          <button
+          <div className="navbar-nav">
+            <a
+              className="nav-item nav-link"
+              href="#"
+              style={{ fontWeight: "900", color: "navy" }}
+            >
+              ABOUT<span className="sr-only">(current)</span>
+            </a>
+            <a
+              className="nav-item nav-link"
+              href="https://drive.google.com/drive/folders/1I1bAta_WLMFjNi-dkz_nSxQ20VUJ6pgX?usp=sharing"
+              style={{ fontWeight: "900", color: "navy" }}
+            >
+              DOWNLOAD
+            </a>
+            <a
+              className="nav-item nav-link"
+              href="#"
+              style={{ fontWeight: "900", color: "navy" }}
+            >
+              START A BUSINESS
+            </a>
+          </div>
+          {/* <button
             className="navbar-toggler hamburger-button"
             type="button"
             data-toggle="collapse"
@@ -101,30 +230,8 @@ const Homepage = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <a
-                className="nav-item nav-link"
-                href="#"
-                style={{ fontWeight: "900", color: "navy" }}
-              >
-                ABOUT<span className="sr-only">(current)</span>
-              </a>
-              <a
-                className="nav-item nav-link"
-                href="https://drive.google.com/drive/folders/1I1bAta_WLMFjNi-dkz_nSxQ20VUJ6pgX?usp=sharing"
-                style={{ fontWeight: "900", color: "navy" }}
-              >
-                DOWNLOAD
-              </a>
-              <a
-                className="nav-item nav-link"
-                href="#"
-                style={{ fontWeight: "900", color: "navy" }}
-              >
-                START A BUSINESS
-              </a>
-            </div>
-          </div>
+            
+          </div> */}
         </nav>
         <div
           id="carouselExampleIndicators"
@@ -149,7 +256,10 @@ const Homepage = () => {
               <img className="d-block w-100" src={slide2} alt="Second slide" />
             </div>
             <div className="carousel-item ">
-              <img className="d-block w-100" src={slide3} alt="Third slide" />
+              <img className="d-block w-100" src={slide4} alt="Third slide" />
+            </div>
+            <div className="carousel-item ">
+              <img className="d-block w-100" src={slide3} alt="Fourth slide" />
             </div>
           </div>
           <a
@@ -180,7 +290,7 @@ const Homepage = () => {
       </div>
 
       <section className="pt-5 pb-5 our-products">
-        <div className="container-fluid">
+        <div className="container-fluid product-show">
           <div className="row">
             <div className="col-6">
               <h2 className="mb-3" style={{ fontWeight: "900", color: "navy" }}>
@@ -229,6 +339,12 @@ const Homepage = () => {
                           />
                           <div className="card-body">
                             <h4 className="card-title">Dry Fruits & Nuts</h4>
+                            <h5>
+                              Pack Size: <span>1Kg</span>
+                            </h5>
+                            <h4>
+                              MRP: <span>$ 4125</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
@@ -249,6 +365,12 @@ const Homepage = () => {
                             <h4 className="card-title">
                               Cold Pressed Olive Oil
                             </h4>
+                            <h5>
+                              Pack Size: <span>1Kg</span>
+                            </h5>
+                            <h4>
+                              MRP: <span>$ 4125</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
@@ -267,6 +389,12 @@ const Homepage = () => {
                           />
                           <div className="card-body">
                             <h4 className="card-title">Premium Sugar</h4>
+                            <h5>
+                              Pack Size: <span>1Kg</span>
+                            </h5>
+                            <h4>
+                              MRP: <span>$ 4125</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
@@ -289,6 +417,12 @@ const Homepage = () => {
                           />
                           <div className="card-body">
                             <h4 className="card-title">Dal & Pulses</h4>
+                            <h5>
+                              Pack Size: <span>1Kg</span>
+                            </h5>
+                            <h4>
+                              MRP: <span>$ 4125</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
@@ -307,6 +441,12 @@ const Homepage = () => {
                           />
                           <div className="card-body">
                             <h4 className="card-title">Basmati Rice</h4>
+                            <h5>
+                              Pack Size: <span>1Kg</span>
+                            </h5>
+                            <h4>
+                              MRP: <span>$ 4125</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
@@ -325,10 +465,207 @@ const Homepage = () => {
                           />
                           <div className="card-body">
                             <h4 className="card-title">Red Chilli Powder</h4>
+                            <h5>
+                              Pack Size: <span>1Kg</span>
+                            </h5>
+                            <h4>
+                              MRP: <span>$ 4125</span>
+                            </h4>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="carousel-example-multi"
+          className="carousel slide carousel-multi-item v-2 product-carousel product-hide"
+          data-ride="carousel"
+        >
+          <div className="col-6">
+            <h2 className="mb-3" style={{ fontWeight: "900", color: "navy" }}>
+              PRODUCTS
+            </h2>
+          </div>
+          <ol className="carousel-indicators">
+            <li
+              data-target="#carousel-example-multi"
+              data-slide-to="0"
+              className="active"
+            ></li>
+            <li data-target="#carousel-example-multi" data-slide-to="1"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="2"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="3"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="4"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="5"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="6"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="7"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="8"></li>
+          </ol>
+
+          <div className="carousel-inner" role="listbox">
+            <div className="carousel-item active mx-auto">
+              <div className="col-12 col-md-3 col-lg-2 mx-auto">
+                <div
+                  className="card card-style"
+                  style={{
+                    boxShadow:
+                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  }}
+                >
+                  <img
+                    className="img-fluid"
+                    alt="100%x280"
+                    src={jle11}
+                    style={{ height: "8rem" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Dry Fruits & Nuts</h3>
+                    <h5>
+                      Pack Size: <span>1Kg</span>
+                    </h5>
+                    <h4>
+                      MRP: <span>$ 4125</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-12 col-md-3 col-lg-2 mx-auto">
+                <div
+                  className="card card-style"
+                  style={{
+                    boxShadow:
+                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  }}
+                >
+                  <img
+                    className="img-fluid"
+                    alt="100%x280"
+                    src={jle11}
+                    style={{ height: "8rem" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Dry Fruits & Nuts</h3>
+                    <h5>
+                      Pack Size: <span>1Kg</span>
+                    </h5>
+                    <h4>
+                      MRP: <span>$ 4125</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-12 col-md-3 col-lg-2 mx-auto">
+                <div
+                  className="card card-style"
+                  style={{
+                    boxShadow:
+                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  }}
+                >
+                  <img
+                    className="img-fluid"
+                    alt="100%x280"
+                    src={jle12}
+                    style={{ height: "8rem" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Cold Pressed Olive Oil</h3>
+                    <h5>
+                      Pack Size: <span>1Kg</span>
+                    </h5>
+                    <h4>
+                      MRP: <span>$ 4125</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-12 col-md-3 col-lg-2 mx-auto">
+                <div
+                  className="card card-style"
+                  style={{
+                    boxShadow:
+                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  }}
+                >
+                  <img
+                    className="img-fluid"
+                    alt="100%x280"
+                    src={jle13}
+                    style={{ height: "8rem" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Premium Sugar</h3>
+                    <h5>
+                      Pack Size: <span>1Kg</span>
+                    </h5>
+                    <h4>
+                      MRP: <span>$ 4125</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-12 col-md-3 col-lg-2 mx-auto">
+                <div
+                  className="card card-style"
+                  style={{
+                    boxShadow:
+                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  }}
+                >
+                  <img
+                    className="img-fluid"
+                    alt="100%x280"
+                    src={jle14}
+                    style={{ height: "8rem" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Dal & Pulses</h3>
+                    <h5>
+                      Pack Size: <span>1Kg</span>
+                    </h5>
+                    <h4>
+                      MRP: <span>$ 4125</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-12 col-md-3 col-lg-2 mx-auto">
+                <div
+                  className="card card-style"
+                  style={{
+                    boxShadow:
+                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  }}
+                >
+                  <img
+                    className="img-fluid"
+                    alt="100%x280"
+                    src={jle15}
+                    style={{ height: "8rem" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Basmati Rice</h3>
+                    <h5>
+                      Pack Size: <span>1Kg</span>
+                    </h5>
+                    <h4>
+                      MRP: <span>$ 4125</span>
+                    </h4>
                   </div>
                 </div>
               </div>

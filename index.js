@@ -6,7 +6,7 @@ import userRoutes from "./Routers/user.js";
 import incomeRoutes from "./Routers/income.js";
 import morgan from "morgan";
 // import razorpayRoutes from './Routers/razorpay.js'
-// import cashfree from './Routers/cashfree.js'
+import cashfree from "./Routers/cashfree.js";
 import path from "path";
 import paytmRoutes from "./Routers/paytm.js";
 import payuRoutes from "./Routers/payu.js";
@@ -33,7 +33,7 @@ app.use(`/api/paytm`, paytmRoutes);
 app.use(`/api/payu`, payuRoutes);
 app.use(`/generate-rpin`, GenerateRpin);
 // app.use(`/api/razorpay`, razorpayRoutes);
-// app.use(`/api/cashfree`, cashfree);
+app.use(`/api/cashfree`, cashfree);
 
 const __dirname = path.resolve();
 // app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
@@ -51,4 +51,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(3000, console.log("Server started"));
+app.listen(5000, console.log("Server started"));

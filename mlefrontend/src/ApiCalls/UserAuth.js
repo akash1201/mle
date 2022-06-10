@@ -32,10 +32,20 @@ const generateRpin = async (type) => {
   }
 };
 
-const generateOrder = async () => {
+const generateOrder = async ({ amt }) => {
   try {
-    let response = await axios.post(`/api/razorpay/create-order`);
-    return response;
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    let config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    let response = await axios.post(
+      `/api/cashfree/create-order`,
+      { amt },
+      config
+    );
+    return response.data;
   } catch (err) {
     return err.response;
   }

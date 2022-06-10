@@ -1,3 +1,52 @@
+.my-about-us {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+  width: 100%;
+}
+.about-content {
+  width: 50%;
+  padding: 3rem;
+}
+.about-img {
+  width: 40%;
+}
+
+.features-row {
+  padding: 3rem;
+  height: 40rem;
+}
+.features-row2 {
+  display: none;
+}
+
+.newsletter {
+  font-family: cursive;
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-around;
+  border-radius: 8px;
+  /* background: #47c5b4; */
+  background: #b2fefa; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0ed2f7,
+    #b2fefa
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0ed2f7,
+    #b2fefa
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  padding: 4rem;
+}
+.why-choose-us {
+  border: 2px solid beige;
+  border-radius: 15px;
+}
+
 .headerShow {
   display: none;
 }
@@ -5,6 +54,30 @@
   display: none;
 }
 @media screen and (max-width: 900px) {
+  .my-about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+  }
+  .about-content {
+    width: 90%;
+    padding: 0;
+  }
+  .about-img {
+    width: 90%;
+  }
+  .about-img > img {
+    width: "5rem";
+    height: "5rem";
+  }
+  .features-row {
+    display: none;
+  }
+  .features-row2 {
+    display: block;
+  }
   .product-hide {
     display: block;
   }
@@ -14,6 +87,37 @@
 }
 
 @media screen and (max-width: 600px) {
+  .top-slider-head {
+    margin-top: 3rem;
+  }
+  .newsletter {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem;
+    width: 85%;
+  }
+  .newsletterRight {
+    margin: 0 auto;
+  }
+
+  .newsletterLeft > h1 {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 2.4rem;
+    color: whitesmoke;
+    font-weight: 600;
+  }
+  .newsletterLeft > h5 {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: whitesmoke;
+    margin-bottom: 1.4rem;
+  }
+  .newsletterLeft > input {
+    margin-bottom: 1.2rem;
+  }
+
   .logo-link {
     width: 30%;
     display: flex;

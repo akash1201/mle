@@ -11,6 +11,7 @@ import { cashfreeSandbox } from "cashfree-dropjs";
 //use import { cashfreeProd } from 'cashfree-dropjs';
 import { Modal, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const GenerateRpin = () => {
   const [loading, setLoading] = useState(() => false);
@@ -19,6 +20,9 @@ const GenerateRpin = () => {
   const [show, setShow] = useState(() => false);
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const [toggle, setToggle] = useState(true);
+  const [ordertoken, setOrdertoken] = useState("");
+  const [cf_order, setCf_order] = useState("");
+  const [paylink, setPaylink] = useState("");
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -26,79 +30,29 @@ const GenerateRpin = () => {
 
   let match = useParams();
 
-  useEffect(() => {
-    // if()
-    if (match.success == "success" && match.orderId) {
-      generateRpin(match.orderId)
-        .then((res) => {
-          console.log(res);
-          setRpin(res.data.rpin);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, []);
-
-  function onScriptLoad(amount, orderid, token) {
-    var config = {
-      root: "#payment_id_div",
-      flow: "DEFAULT",
-      data: {
-        orderId: orderid /* update order id */,
-        token: token /* update token value */,
-        tokenType: "TXN_TOKEN",
-        amount: amount /* update amount */,
-      },
-      handler: {
-        notifyMerchant: function (eventName, data) {
-          // setShow(true)
-          console.log("notifyMerchant handler function called");
-          console.log("eventName => ", eventName);
-          console.log("data => ", data);
-        },
-      },
-    };
-
-    if (window.Paytm && window.Paytm.CheckoutJS) {
-      setShow(true);
-      window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
-        // initialze configuration using init method
-        console.log(config);
-        window.Paytm.CheckoutJS.init(config)
-          .then(function onSuccess() {
-            // after successfully updating configuration, invoke JS Checkout
-            window.Paytm.CheckoutJS.invoke();
-          })
-          .catch(function onError(error) {
-            console.log("error => ", error);
-            setShow(false);
-          });
-      });
-    }
-  }
-
-  const generatePin = async (type) => {
+  const generatePin = async (amount) => {
     try {
-      let data = await generateOrderToken(type);
-      console.log(data);
-      let amount = 1550;
-      if (type == 2) {
-        amount = 1650;
-      } else if (type == 3) {
-        amount = 2100;
-      }
-      const script = document.createElement("script");
-      script.src = `https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/OhKWfG63235488646929.js`;
-      document.body.appendChild(script);
-      script.addEventListener("load", () => {
-        console.log(script);
-        onScriptLoad(amount, data.orderid, data.data);
-      });
-      // script.onLoad(()=>{onScriptLoad(amount, data.orderid, data.token)})
+      let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      let config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      let response = await axios.post(
+        `/api/cashfree/create-order`,
+        { amt: amount },
+        config
+      );
+      window.open(response.data.link, "_blank", "noopener,noreferrer");
+      console.log(response.data);
+      return response.data;
     } catch (err) {
-      console.log(err);
+      return err.response;
     }
+
+    // setOrdertoken(info.data.token);
+    // setPaylink(info.data.link);
+    // setCf_order(info.data.cf_order);
   };
 
   return (
@@ -153,7 +107,7 @@ const GenerateRpin = () => {
                               <button
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  generatePin(1);
+                                  generatePin(1500);
                                 }}
                                 disabled={loading}
                                 className="btn btn-success btn-block loginbtn"
@@ -165,7 +119,7 @@ const GenerateRpin = () => {
                               <button
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  generatePin(2);
+                                  generatePin(1650);
                                 }}
                                 disabled={loading}
                                 className="btn btn-success btn-block loginbtn"
@@ -177,7 +131,7 @@ const GenerateRpin = () => {
                               <button
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  generatePin(3);
+                                  generatePin(2100);
                                 }}
                                 disabled={loading}
                                 className="btn btn-success btn-block loginbtn"

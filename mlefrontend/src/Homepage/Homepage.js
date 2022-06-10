@@ -18,6 +18,14 @@ import img1 from "./about.png";
 import logo from "./logo.png";
 import search from "./search.svg";
 import "./landingpage.css";
+import facebook from "./img/facebook.png";
+import linkedin from "./img/linkedin.png";
+import twitter from "./img/twitter.png";
+import youtube from "./img/youtube.png";
+import instagram from "./img/instagram.png";
+import downloadstore from "./img/downloadstore.png";
+import appstore from "./img/appstore.png";
+import whatsapp from "./img/whatsapp.png";
 
 const Homepage = () => {
   const [images, setImages] = useState(() => [
@@ -27,8 +35,11 @@ const Homepage = () => {
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <div className="container-fluid" style={{ width: "100%", padding: "0" }}>
-        <div className="headerShow">
+      <div
+        className="container-fluid top-slider-head"
+        style={{ width: "100%", padding: "0" }}
+      >
+        <div className="headerShow navbar-fixed-top">
           <div className="logo-link">
             <nav
               className="navbar navbar-expand-lg navbar-light bg-light "
@@ -105,13 +116,14 @@ const Homepage = () => {
                 id="navbarNavAltMarkup1"
               >
                 <div className="navbar-nav">
-                  <a
+                  <Link
+                    to="/login"
                     className="nav-item nav-link"
                     href="#"
                     style={{ fontWeight: "900", color: "navy" }}
                   >
                     Login<span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
 
                   <a
                     className="nav-item nav-link"
@@ -128,7 +140,7 @@ const Homepage = () => {
             </a>
           </div>
         </div>
-        <div className="headerLanding">
+        <div className="headerLanding ">
           <a href="#default" className="logo">
             <img
               className="main-logo"
@@ -137,19 +149,6 @@ const Homepage = () => {
               style={{ width: "5rem", height: "5rem" }}
             />
           </a>
-          {/* <div className="headerLanding-right"> */}
-          {/* <Link
-              className="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3"
-              to="/login"
-            >
-              Sign In
-            </Link>
-            <Link
-              className="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3"
-              to="/"
-            >
-              Register
-            </Link> */}
           <nav
             className="navbar navbar-expand-lg navbar-light bg-light headerLanding-right nav-hide"
             style={{ marginBottom: "0" }}
@@ -247,6 +246,8 @@ const Homepage = () => {
             ></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
           </ol>
           <div className="carousel-inner">
             <div className="carousel-item active ">
@@ -288,393 +289,141 @@ const Homepage = () => {
           </a>
         </div>
       </div>
-
-      <section className="pt-5 pb-5 our-products">
-        <div className="container-fluid product-show">
-          <div className="row">
-            <div className="col-6">
-              <h2 className="mb-3" style={{ fontWeight: "900", color: "navy" }}>
-                OUR PRODUCTS
-              </h2>
+      <div className="row features-row">
+        <div className="col align-self-center h-75">
+          <div
+            className="card justify-content-center"
+            style={{ width: "17rem", margin: "0 auto" }}
+          >
+            <img src={jle14} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
             </div>
-            <div className="col-6 text-right">
-              <a
-                className="btn btn-primary mb-3 mr-1"
-                href="#carouselExampleIndicators2"
-                role="button"
-                data-slide="prev"
-              >
-                <i className="fa fa-arrow-left"></i>
-              </a>
-              <a
-                className="btn btn-primary mb-3"
-                href="#carouselExampleIndicators2"
-                role="button"
-                data-slide="next"
-              >
-                <i className="fa fa-arrow-right"></i>
-              </a>
+          </div>
+        </div>
+        <div className="col align-self-center h-100">
+          <div className="card" style={{ width: "17rem", margin: "0 auto" }}>
+            <img src={jle14} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
             </div>
-            <div className="col-12">
-              <div
-                id="carouselExampleIndicators2"
-                className="carousel slide"
-                data-ride="carousel"
-              >
-                <div className="carousel-inner">
-                  <div className="carousel-item active">
-                    <div className="row">
-                      <div className="col-md-4 mb-3 card-column">
-                        <div
-                          className="card"
-                          style={{
-                            boxShadow:
-                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                          }}
-                        >
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src={jle11}
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">Dry Fruits & Nuts</h4>
-                            <h5>
-                              Pack Size: <span>1Kg</span>
-                            </h5>
-                            <h4>
-                              MRP: <span>$ 4125</span>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mb-3 card-column">
-                        <div
-                          className="card"
-                          style={{
-                            boxShadow:
-                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                          }}
-                        >
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src={jle12}
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">
-                              Cold Pressed Olive Oil
-                            </h4>
-                            <h5>
-                              Pack Size: <span>1Kg</span>
-                            </h5>
-                            <h4>
-                              MRP: <span>$ 4125</span>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mb-3 card-column">
-                        <div
-                          className="card"
-                          style={{
-                            boxShadow:
-                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                          }}
-                        >
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src={jle13}
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">Premium Sugar</h4>
-                            <h5>
-                              Pack Size: <span>1Kg</span>
-                            </h5>
-                            <h4>
-                              MRP: <span>$ 4125</span>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    <div className="row">
-                      <div className="col-md-4 mb-3 card-column">
-                        <div
-                          className="card"
-                          style={{
-                            boxShadow:
-                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                          }}
-                        >
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src={jle14}
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">Dal & Pulses</h4>
-                            <h5>
-                              Pack Size: <span>1Kg</span>
-                            </h5>
-                            <h4>
-                              MRP: <span>$ 4125</span>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mb-3 card-column">
-                        <div
-                          className="card"
-                          style={{
-                            boxShadow:
-                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                          }}
-                        >
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src={jle15}
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">Basmati Rice</h4>
-                            <h5>
-                              Pack Size: <span>1Kg</span>
-                            </h5>
-                            <h4>
-                              MRP: <span>$ 4125</span>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4 mb-3 card-column">
-                        <div
-                          className="card"
-                          style={{
-                            boxShadow:
-                              "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                          }}
-                        >
-                          <img
-                            className="img-fluid"
-                            alt="100%x280"
-                            src={jle16}
-                          />
-                          <div className="card-body">
-                            <h4 className="card-title">Red Chilli Powder</h4>
-                            <h5>
-                              Pack Size: <span>1Kg</span>
-                            </h5>
-                            <h4>
-                              MRP: <span>$ 4125</span>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div className="col align-self-center h-75">
+          <div className="card" style={{ width: "17rem", margin: "0 auto" }}>
+            <img src={jle14} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Card title</h5>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="carouselExampleControls"
+        class="carousel slide features-row2"
+        data-ride="carousel"
+        style={{ marginBottom: "2rem" }}
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="3000">
+            <div className="card" style={{ width: "15rem", margin: "0 auto" }}>
+              <img
+                src={jle14}
+                style={{ width: "5rem", height: "5rem", margin: "0 auto" }}
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">Card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="3000">
+            <div className="card" style={{ width: "15rem", margin: "0 auto" }}>
+              <img
+                src={jle14}
+                style={{ width: "5rem", height: "5rem", margin: "0 auto" }}
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body" data-interval="3000">
+                <h5 className="card-title">Card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div className="card" style={{ width: "15rem", margin: "0 auto" }}>
+              <img
+                src={jle14}
+                style={{ width: "5rem", height: "5rem", margin: "0 auto" }}
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">Card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div
-          id="carousel-example-multi"
-          className="carousel slide carousel-multi-item v-2 product-carousel product-hide"
-          data-ride="carousel"
-        >
-          <div className="col-6">
-            <h2 className="mb-3" style={{ fontWeight: "900", color: "navy" }}>
-              PRODUCTS
-            </h2>
-          </div>
-          <ol className="carousel-indicators">
-            <li
-              data-target="#carousel-example-multi"
-              data-slide-to="0"
-              className="active"
-            ></li>
-            <li data-target="#carousel-example-multi" data-slide-to="1"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="2"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="3"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="4"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="5"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="6"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="7"></li>
-            <li data-target="#carousel-example-multi" data-slide-to="8"></li>
-          </ol>
+      </div>
 
-          <div className="carousel-inner" role="listbox">
-            <div className="carousel-item active mx-auto">
-              <div className="col-12 col-md-3 col-lg-2 mx-auto">
-                <div
-                  className="card card-style"
-                  style={{
-                    boxShadow:
-                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                  }}
-                >
-                  <img
-                    className="img-fluid"
-                    alt="100%x280"
-                    src={jle11}
-                    style={{ height: "8rem" }}
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Dry Fruits & Nuts</h3>
-                    <h5>
-                      Pack Size: <span>1Kg</span>
-                    </h5>
-                    <h4>
-                      MRP: <span>$ 4125</span>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="col-12 col-md-3 col-lg-2 mx-auto">
-                <div
-                  className="card card-style"
-                  style={{
-                    boxShadow:
-                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                  }}
-                >
-                  <img
-                    className="img-fluid"
-                    alt="100%x280"
-                    src={jle11}
-                    style={{ height: "8rem" }}
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Dry Fruits & Nuts</h3>
-                    <h5>
-                      Pack Size: <span>1Kg</span>
-                    </h5>
-                    <h4>
-                      MRP: <span>$ 4125</span>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="col-12 col-md-3 col-lg-2 mx-auto">
-                <div
-                  className="card card-style"
-                  style={{
-                    boxShadow:
-                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                  }}
-                >
-                  <img
-                    className="img-fluid"
-                    alt="100%x280"
-                    src={jle12}
-                    style={{ height: "8rem" }}
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Cold Pressed Olive Oil</h3>
-                    <h5>
-                      Pack Size: <span>1Kg</span>
-                    </h5>
-                    <h4>
-                      MRP: <span>$ 4125</span>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="col-12 col-md-3 col-lg-2 mx-auto">
-                <div
-                  className="card card-style"
-                  style={{
-                    boxShadow:
-                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                  }}
-                >
-                  <img
-                    className="img-fluid"
-                    alt="100%x280"
-                    src={jle13}
-                    style={{ height: "8rem" }}
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Premium Sugar</h3>
-                    <h5>
-                      Pack Size: <span>1Kg</span>
-                    </h5>
-                    <h4>
-                      MRP: <span>$ 4125</span>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="col-12 col-md-3 col-lg-2 mx-auto">
-                <div
-                  className="card card-style"
-                  style={{
-                    boxShadow:
-                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                  }}
-                >
-                  <img
-                    className="img-fluid"
-                    alt="100%x280"
-                    src={jle14}
-                    style={{ height: "8rem" }}
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Dal & Pulses</h3>
-                    <h5>
-                      Pack Size: <span>1Kg</span>
-                    </h5>
-                    <h4>
-                      MRP: <span>$ 4125</span>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="col-12 col-md-3 col-lg-2 mx-auto">
-                <div
-                  className="card card-style"
-                  style={{
-                    boxShadow:
-                      "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
-                  }}
-                >
-                  <img
-                    className="img-fluid"
-                    alt="100%x280"
-                    src={jle15}
-                    style={{ height: "8rem" }}
-                  />
-                  <div className="card-body">
-                    <h3 className="card-title">Basmati Rice</h3>
-                    <h5>
-                      Pack Size: <span>1Kg</span>
-                    </h5>
-                    <h4>
-                      MRP: <span>$ 4125</span>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="newsletter">
+        <div className="newsletterRight">
+          <img src={jle11} style={{ width: "10rem", height: "10rem" }}></img>
         </div>
-      </section>
-
-      <section
+        <div className="newsletterLeft">
+          <h1>Subscribe</h1>
+          <h5>We'll keep you in the know</h5>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter E-mail"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+      <div className="my-about-us">
+        <div className="about-content">
+          <h1>About-Us</h1>
+          <p>
+            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
+            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
+            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
+            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
+            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
+            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
+          </p>
+        </div>
+        <div className="about-img">
+          <img src={jle12} />
+        </div>
+      </div>
+      {/* <section
         className="my-5 about-us"
         style={{
           boxShadow:
@@ -722,47 +471,81 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
       <footer
         className="position-relative"
         id="footer-main"
         style={{ backgroundColor: "navy" }}
       >
-        <div className="container pt-4">
+        <div className="container pt-3">
           <div className="row">
-            <div className="col-lg-4 mb-5 mb-lg-0">
-              <a href="index.html">
-                <span>
-                  <h3 style={{ color: "white" }}>
-                    <span style={{ color: "#7ac81e" }}>JLE </span>Megamart
-                  </h3>
-                </span>
-              </a>
-
-              <p
-                className="mt-4 text-sm opacity-8 pr-lg-4"
-                style={{ color: "white" }}
-              >
-                JLE is an attempt to give tier-2 city the feel of e-commerce.
-              </p>
-
-              <ul className="nav mt-4">
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#" target="_blank">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                </li>
-              </ul>
+            <div className="col-lg-6 mb-6 mb-lg-0 align-self-center">
+              <span>
+                <h1 style={{ color: "#a9f75c" }}>
+                  <span>JLE </span>Megamart
+                </h1>
+                <p
+                  style={{
+                    color: "white",
+                    fontSize: "1.4rem",
+                    fontFamily: "sans-serif",
+                  }}
+                >
+                  Chalsa, Dist. Jalpaiguri
+                  <br />
+                  755206, West Bengal
+                </p>
+              </span>
+              <span>
+                <a href="https://www.instagram.com/gravitybites/?hl=en">
+                  <img
+                    src={instagram}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  />
+                </a>
+                <a href="">
+                  <img
+                    src={youtube}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  />
+                </a>
+                <a href="https://www.facebook.com/Gravitybites/?ref=pages_you_manage">
+                  <img
+                    src={facebook}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  />
+                </a>
+                <a href="">
+                  <img
+                    src={twitter}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      marginRight: "1rem",
+                    }}
+                  />
+                </a>
+                <a href="https://www.linkedin.com/company/gravity-bites-gb/">
+                  <img
+                    src={linkedin}
+                    style={{ width: "1rem", height: "1rem" }}
+                  />
+                </a>
+              </span>
             </div>
-
-            <div className="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0"></div>
-            <div className="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0"></div>
-            <div className="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0"></div>
           </div>
           <hr className="divider divider-fade divider-dark my-4" />
           <div className="row align-items-center justify-content-md-between pb-4">

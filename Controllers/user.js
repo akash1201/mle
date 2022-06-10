@@ -7,7 +7,8 @@ import Rpin from "../Models/Rpin.js";
 import { ObjectId } from "mongodb";
 import Bill from "../Models/Bill.js";
 import base64 from "base-64";
-import fetch from "node-fetch";
+import axios from "axios";
+import env from "dotenv";
 
 const registerUser = asyncHandler(async (req, res) => {
   let max = await User.aggregate([
@@ -43,6 +44,42 @@ const registerUser = asyncHandler(async (req, res) => {
       { rpin: req.body.rpin },
       { $set: { iAssigned: true, assignedTo: user._id } }
     );
+    let bankDetail = {
+      accountNumber: req.body.account,
+      accountHolder: req.body.name,
+      ifsc: req.body.ifsc,
+    };
+
+    const options = {
+      method: "POST",
+      url: "https://api.cashfree.com/api/v2/easy-split/vendors",
+      headers: {
+        Accept: "application/json",
+        "x-api-version": "2022-01-01",
+        "x-client-id": process.env.CASHFREE_APP_ID,
+        "x-client-secret": process.env.CASHFREE_SECRET,
+        "Content-Type": "application/json",
+      },
+
+      data: {
+        email: "jlemegamart@gmail.com",
+        status: "ACTIVE",
+        bank: bankDetail,
+        phone: obj.phone,
+        name: obj.name,
+        id: obj.userId,
+        settlementCycleId: 2,
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
     res.json(obj);
   } catch (err) {
     console.log(err);
@@ -162,8 +199,10 @@ const getUserInfo = asyncHandler(async (req, res) => {
   let userid = jwt.verify(token, process.env.JWT_SECRET);
 
   let user = await User.findOne({ _id: userid.id }, { _id: 0, password: 0 });
-  console.log(user);
 
+  console.log(user);
+  user.bankAccountNo = base64.decode(user.bankAccountNo);
+  user.bankIfsc = base64.decode(user.bankIfsc);
   res.json({ user: user });
 });
 

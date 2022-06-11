@@ -38,14 +38,46 @@ const GenerateRpin = () => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      let response = await axios.post(
-        `/api/cashfree/create-order`,
-        { amt: amount },
-        config
-      );
-      window.open(response.data.link, "_blank", "noopener,noreferrer");
-      console.log(response.data);
-      return response.data;
+       let response = await axios.post(`/api/cashfree/generate-token`, {amount : amount}, config);
+       setShow(true)
+       const dropConfig = {
+        "components": [
+            "order-details",
+            "card",
+            "netbanking",
+            "app",
+            "upi"
+        ],
+        "orderToken": response.data.token,
+        "onSuccess": function(data) {
+            //on payment flow complete
+            console.log(data);
+            successGenerateRpin(data.order.orderId, amount)
+        },
+        "onFailure": function(data) {
+            //on failure during payment initiation
+            setError('Transaction Failed, Try again');
+            setShow(false)
+        },
+        "style": {
+            //to be replaced by the desired values
+            "backgroundColor": "#ffffff",
+            "color": "#11385b",
+            "fontFamily": "Lato",
+            "fontSize": "14px",
+            "errorColor": "#ff0000",
+            "theme": "light", //(or dark)
+        }
+    }
+    
+    const cashfree = new window.Cashfree();
+    const paymentElement = document.getElementById("payment_id_div");
+    try {
+      cashfree.initialiseDropin(paymentElement, dropConfig);
+    } catch(err) {
+      console.log(err);
+    }
+
     } catch (err) {
       return err.response;
     }
@@ -54,6 +86,36 @@ const GenerateRpin = () => {
     // setPaylink(info.data.link);
     // setCf_order(info.data.cf_order);
   };
+
+  const successGenerateRpin = async (orderId,  amount) => {
+
+    setShow(false);
+    let type = 1;
+    if(amount == 1650){
+      type = 2;
+    }else if (amount == 2100){
+      type = 3;
+    }
+     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    let config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    let body = {
+      type : type,
+      orderId : orderId
+    }
+    setLoading(true);
+    try{
+      let response = await axios.post(`/api/users/rpin`, body, config);
+    console.log(response);
+    setRpin(response.data.rpin);
+  }catch(err){
+    setError('Cannot generate rpin, please contact admin');
+  }
+    setLoading(false);
+  }
 
   return (
     <>
@@ -107,7 +169,7 @@ const GenerateRpin = () => {
                               <button
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  generatePin(1500);
+                                  generatePin(1550);
                                 }}
                                 disabled={loading}
                                 className="btn btn-success btn-block loginbtn"

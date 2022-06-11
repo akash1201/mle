@@ -9,6 +9,7 @@ import Bill from "../Models/Bill.js";
 import base64 from "base-64";
 import axios from "axios";
 import env from "dotenv";
+import fetch from 'node-fetch';
 
 const registerUser = asyncHandler(async (req, res) => {
   let max = await User.aggregate([
@@ -357,7 +358,127 @@ const getUserCount = asyncHandler(async (req, res) => {
   }
   res.json({ directDL: directDL, allDL: allDL, totalEarning: 0, thisMonth: 0 });
 });
+
+const rpinGenerate = asyncHandler(async (req, res)=>{
+
+  try{
+    let orderId = req.body.orderId;
+    let type = req.body.type;
+    let token = req.headers.authorization.split(" ")[1];
+    let userid = jwt.verify(token, process.env.JWT_SECRET);
+    let rpin = uuidv4();
+
+    let obj = {
+          rpin : rpin,
+          generatedBy : userid.id,
+          paymentStatus : 'paid',
+          isAssigned : false,
+          type : type,
+          orderId : orderId
+    }
+    
+    let pin = await Rpin.create(obj);
+
+    let arr = [];
+    let user = await User.findById(userid.id);
+    let parentId = user.parentId;
+    for(let i=0; i<7; ++i){
+      let obj = {};
+       if(parentId != 'parent'){
+          let parent = await User.findById(parentId);
+          parentId = parent.parentId;
+          if(parent.userType != 'admin'){
+
+            let amount = 45;
+            if(i==0){
+                amount = 225
+            }else if (i==1 || i == 2){
+                amount = 180
+            }else if (i=3){
+              amount = 90
+            }
+
+            obj =  {
+              "vendorId": parent.userId,
+              "amount": amount,
+              "percentage": null
+          }
+          console.log(obj);
+          arr = [...arr, obj];
+          }
+       }
+    }
+    if(arr.length != 0){
+     let config = {
+      'Content-Type': 'application/json',
+      'x-api-version': '2022-01-01',
+      'x-client-id' : process.env.CASHFREE_APP_ID,
+      'x-client-secret' : process.env.CASHFREE_SECRET
+    }
+    let body = {
+        split : arr,
+        splitType : "ORDER_AMOUNT"
+    }
+    let response = await fetch(`${process.env.URL}/api/v2/easy-split/orders/${orderId}/split`,{
+      method : 'POST',
+      headers : config,
+      body : JSON.stringify(body)
+    });
+    res.json(pin);
+    }else{
+      res.json(pin);
+    }
+
+  }catch(err){
+    res.status(400).json({message : err.message})
+  }
+
+
+})
+
+const registerVendors = asyncHandler (async (req, res)=>{
+
+  let page = req.params.pageNo? req.params.pageNo : 1;
+  let skip = (page-1)*10;
+  let users = await User.find({}).skip(skip).limit(10);
+  let config = {
+    'Content-Type': 'application/json',
+    'x-api-version': '2022-01-01',
+    'x-client-id' : process.env.CASHFREE_APP_ID,
+    'x-client-secret' : process.env.CASHFREE_SECRET
+  }
+  let arr = [];
+  for(let i=0; i<users.length; ++i){
+    let user = users[i];
+    
+    if(user.bankAccountNo && user.bankIfsc){
+      let data = {
+      email: "jlemegamart@gmail.com",
+      status: "ACTIVE",
+      bank: {
+    accountNumber: base64.decode(user.bankAccountNo),
+    accountHolder: user.name,
+    ifsc: base64.decode(user.bankIfsc),
+  },
+      phone: user.phone? user.phone : '7431979503',
+      name: user.name,
+      id: user.userId,
+      settlementCycleId: 2,
+    }
+
+    let response = await fetch(`${process.env.URL}/api/v2/easy-split/vendors`, {
+      method : 'POST',
+      headers : config,
+      body : JSON.stringify(data)
+    });
+    let data1 = await response.json();
+    arr = [...arr, data1];}
+  }
+  res.json(arr)
+})
 export {
+  registerVendors,
+  rpinGenerate,
   getUserCount,
   updateUserInfo,
   getVendors,

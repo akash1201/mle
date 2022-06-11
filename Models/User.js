@@ -55,7 +55,7 @@ const UserSchema = mongoose.Schema(
     },
     bankIfsc: {
       type: String,
-    },
+    }
   },
   {
     timestamps: true,

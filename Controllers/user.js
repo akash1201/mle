@@ -311,12 +311,36 @@ const addUser = asyncHandler(async (req, res) => {
       phone: req.body.phone,
       password: req.body.password,
       contactId: contactId,
-      fundId: data1.id,
       bankAccountNo: accNo,
       bankIfsc: ifsc,
     };
 
     let user = await User.create(obj);
+
+
+    //cashfree
+    let data = {
+      email: "jlemegamart@gmail.com",
+      status: "ACTIVE",
+      bank: {
+    accountNumber: base64.decode(user.bankAccountNo),
+    accountHolder: user.name,
+    ifsc: base64.decode(user.bankIfsc),
+  },
+      phone: user.phone? user.phone : '7431979503',
+      name: user.name,
+      id: user.userId,
+      settlementCycleId: 2,
+    }
+
+    let response = await fetch(`${process.env.URL}/api/v2/easy-split/vendors`, {
+      method : 'POST',
+      headers : config,
+      body : JSON.stringify(data)
+    });
+    //cashfree
+
+
     res.json(user);
   }
 });

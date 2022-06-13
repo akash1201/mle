@@ -7,8 +7,8 @@ import {
   generateOrder,
   generateOrderToken,
 } from "../ApiCalls/UserAuth";
-import { cashfreeSandbox } from "cashfree-dropjs";
-//use import { cashfreeProd } from 'cashfree-dropjs';
+// import { cashfreeSandbox } from "cashfree-dropjs";
+import { cashfreeProd } from 'cashfree-dropjs';
 import { Modal, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -39,7 +39,7 @@ const GenerateRpin = () => {
         },
       };
        let response = await axios.post(`/api/cashfree/generate-token`, {amount : amount}, config);
-       setShow(true)
+       setShow(true);
        const dropConfig = {
         "components": [
             "order-details",
@@ -51,7 +51,6 @@ const GenerateRpin = () => {
         "orderToken": response.data.token,
         "onSuccess": function(data) {
             //on payment flow complete
-            console.log(data);
             successGenerateRpin(data.order.orderId, amount)
         },
         "onFailure": function(data) {
@@ -70,10 +69,14 @@ const GenerateRpin = () => {
         }
     }
     
-    const cashfree = new window.Cashfree();
-    const paymentElement = document.getElementById("payment_id_div");
+    // let testCashfree = new cashfreeSandbox.Cashfree();
+     let prodCashfree = new cashfreeProd.Cashfree();
+
+    // const cashfree = new window.Cashfree();
+    // const paymentElement = document.getElementById("payment_id_div");
     try {
-      cashfree.initialiseDropin(paymentElement, dropConfig);
+      // cashfree.initialiseDropin(paymentElement, dropConfig);
+      prodCashfree.initialiseDropin(document.getElementById("payment_id_div"), dropConfig);
     } catch(err) {
       console.log(err);
     }

@@ -22,6 +22,14 @@ const Sider = () => {
       vendor: true,
     },
     {
+      name: "Dashboard",
+      icon: "fa fa-th-large",
+      path: "/main-dashboard ",
+      admin: true,
+      user: true,
+      vendor: true,
+    },
+    {
       name: "My Team",
       icon: "fas fa-users",
       path: "/my-dashboard",
@@ -47,14 +55,6 @@ const Sider = () => {
     },
     {
       name: "Summary",
-      icon: "fas fa-cog",
-      path: "/membership-benefits",
-      admin: true,
-      user: true,
-      vendor: false,
-    },
-    {
-      name: "Income Statement",
       icon: "fas fa-cog",
       path: "/membership-benefits",
       admin: true,

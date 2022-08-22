@@ -38,6 +38,7 @@ function App() {
         <Route path=":success/:orderId" element={<GenerateRpin />} />
       </Route>
       <Route path="my-dashboard" element={<MyDashboard />} />
+      <Route path="main-dashboard" element={<MyDashboard />} />
       <Route path="add-downline" element={<AddDownline />} />
       <Route path="membership-benefits" element={<CashBack />} />
       <Route path="vendor-management" element={<VendorManagement />} />

@@ -23,7 +23,14 @@ const UpdateUser = () => {
     panNo: "",
     update: false,
   });
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
+
   useEffect(() => {
     setLoading(false);
   }, []);
@@ -42,6 +49,8 @@ const UpdateUser = () => {
     let result = await updateUserInfo(data);
     console.log(result);
   };
+
+  
 
   return (
     <>

@@ -107,7 +107,7 @@ const Homepage = () => {
                 aria-controls="navbarNavAltMarkup"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "40px", height: "40px", padding:1, margin:1}}
               >
                 <img src={person} style={{ width: "100%", height: "100%" }} />
               </button>
@@ -135,8 +135,8 @@ const Homepage = () => {
                 </div>
               </div>
             </nav>
-            <a style={{ padding: "0.7rem" }}>
-              <img src={search} style={{ width: "100%", height: "100%" }} />
+            <a style={{ padding: "1", margin:'4px 0px ',  width:40, height:40 }}>
+              <img src={search} style={{ width: "100%", height: "100%", padding:0, margin:0 }} />
             </a>
           </div>
         </div>
@@ -396,7 +396,7 @@ const Homepage = () => {
           <img src={jle11} style={{ width: "10rem", height: "10rem" }}></img>
         </div>
         <div className="newsletterLeft">
-          <h1>Subscribe</h1>
+          <h1 className="responsive-subscribe">Subscribe</h1>
           <h5>We'll keep you in the know</h5>
           <input
             type="text"
@@ -408,9 +408,17 @@ const Homepage = () => {
         </div>
       </div>
       <div className="my-about-us">
-        <div className="about-content">
+        <div
+          className="about-content"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <h1>About-Us</h1>
-          <p>
+          <p style={{ textAlign: "center" }}>
             thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
             thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
             thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
@@ -480,71 +488,86 @@ const Homepage = () => {
       >
         <div className="container pt-3">
           <div className="row">
-            <div className="col-lg-6 mb-6 mb-lg-0 align-self-center">
-              <span>
-                <h1 style={{ color: "#a9f75c" }}>
-                  <span>JLE </span>Megamart
-                </h1>
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "1.4rem",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  Chalsa, Dist. Jalpaiguri
-                  <br />
-                  755206, West Bengal
-                </p>
-              </span>
-              <span>
-                <a href="https://www.instagram.com/gravitybites/?hl=en">
-                  <img
-                    src={instagram}
+            <div className="col-lg-6 mb-6 mb-lg-0 align-self-center ">
+              <div className="media-center" style={{flexDirection:'column', alignItems:'center'}}>
+                <div>
+                  <h1 className="custome-size1" style={{ color: "#a9f75c" }}>
+                    <span>JLE </span>Megamart
+                  </h1>
+                </div>
+                <div>
+                  <p
                     style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
+                      color: "white",
+                      fontSize: "1.4rem",
+                      fontFamily: "sans-serif",
                     }}
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src={youtube}
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
-                    }}
-                  />
-                </a>
-                <a href="https://www.facebook.com/Gravitybites/?ref=pages_you_manage">
-                  <img
-                    src={facebook}
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
-                    }}
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src={twitter}
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
-                    }}
-                  />
-                </a>
-                <a href="https://www.linkedin.com/company/gravity-bites-gb/">
-                  <img
-                    src={linkedin}
-                    style={{ width: "1rem", height: "1rem" }}
-                  />
-                </a>
-              </span>
+                    className="custome-size2"
+                  >
+                    Chalsa, Dist. Jalpaiguri
+                    <br />
+                    755206, West Bengal
+                  </p>
+                </div>
+              </div>
+              <div className="media-center" style={{display:'flex'}}>
+                <div>
+                  <a href="https://www.instagram.com/gravitybites/?hl=en">
+                    <img
+                      src={instagram}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img
+                      src={youtube}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.facebook.com/Gravitybites/?ref=pages_you_manage">
+                    <img
+                      src={facebook}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img
+                      src={twitter}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.linkedin.com/company/gravity-bites-gb/">
+                    <img
+                      src={linkedin}
+                      style={{ width: "1rem", height: "1rem" }}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <hr className="divider divider-fade divider-dark my-4" />
@@ -595,9 +618,13 @@ const Homepage = () => {
                     Refund
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li
+                  className="nav-item "
+                  style={{ width: "88px", padding: "10px 0" }}
+                >
                   <Link
                     className="nav-link"
+                    id="about-link"
                     to="/about-us"
                     style={{ color: "#7ac81e" }}
                   >

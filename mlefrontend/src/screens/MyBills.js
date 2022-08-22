@@ -13,7 +13,14 @@ const MyBills = () => {
 
   const [loading, setLoading] = useState(() => false);
   const [bills, setBills] = useState(() => []);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
+
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -53,6 +60,8 @@ const MyBills = () => {
       showOnDesktop: true,
     },
   ];
+
+  
 
   return (
     <>

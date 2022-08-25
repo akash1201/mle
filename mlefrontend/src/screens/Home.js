@@ -32,8 +32,16 @@ const Home = () => {
   const [password, setPassword] = useState(() => "");
   const [cpassword, setCpassword] = useState(() => "");
   const [loading, setLoading] = useState(() => true);
-  const [toggle, setToggle] = useState(true);
   const [update, setUpdate] = useState(false);
+
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
+
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -81,6 +89,8 @@ const Home = () => {
   const updateRoute = () => {
     navigate("/updateUser");
   };
+
+  
 
   return (
     <>

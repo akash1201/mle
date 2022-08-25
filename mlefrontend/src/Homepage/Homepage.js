@@ -26,6 +26,11 @@ import instagram from "./img/instagram.png";
 import downloadstore from "./img/downloadstore.png";
 import appstore from "./img/appstore.png";
 import whatsapp from "./img/whatsapp.png";
+import bodyImg1 from "../assets/imgs/bodyImg1.jpeg";
+import bodyImg2 from "../assets/imgs/bodyImg2.jpeg";
+import bodyImg3 from "../assets/imgs/bodyImg3.jpeg";
+import bodyImg4 from "../assets/imgs/bodyImg4.jpeg";
+import "../assets/css/style.css";
 
 const Homepage = () => {
   const [images, setImages] = useState(() => [
@@ -107,7 +112,7 @@ const Homepage = () => {
                 aria-controls="navbarNavAltMarkup"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "40px", height: "40px", padding: 1, margin: 1 }}
               >
                 <img src={person} style={{ width: "100%", height: "100%" }} />
               </button>
@@ -135,8 +140,18 @@ const Homepage = () => {
                 </div>
               </div>
             </nav>
-            <a style={{ padding: "0.7rem" }}>
-              <img src={search} style={{ width: "100%", height: "100%" }} />
+            <a
+              style={{
+                padding: "1",
+                margin: "4px 0px ",
+                width: 40,
+                height: 40,
+              }}
+            >
+              <img
+                src={search}
+                style={{ width: "100%", height: "100%", padding: 0, margin: 0 }}
+              />
             </a>
           </div>
         </div>
@@ -191,32 +206,44 @@ const Homepage = () => {
         </div>
 
         <nav
-          className="navbar navbar-expand-lg navbar-light bg-light nav-hide"
-          style={{ marginBottom: "0" }}
+          className="navbar navbar-expand-lg navbar-dark nav-hide"
+          style={{ marginBottom: "0", backgroundColor:'rgb(2, 2, 110)' }}
+          aria-label="Tenth navbar example"
         >
-          <div className="navbar-nav">
-            <a
-              className="nav-item nav-link"
-              href="#"
-              style={{ fontWeight: "900", color: "navy" }}
-            >
-              ABOUT<span className="sr-only">(current)</span>
-            </a>
-            <a
-              className="nav-item nav-link"
-              href="https://drive.google.com/drive/folders/1I1bAta_WLMFjNi-dkz_nSxQ20VUJ6pgX?usp=sharing"
-              style={{ fontWeight: "900", color: "navy" }}
-            >
-              DOWNLOAD
-            </a>
-            <a
-              className="nav-item nav-link"
-              href="#"
-              style={{ fontWeight: "900", color: "navy" }}
-            >
-              START A BUSINESS
-            </a>
-          </div>
+              <div class="container-fluid">
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarsExample08"
+                  aria-controls="navbarsExample08"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                  class="collapse navbar-collapse justify-content-md-center"
+                  id="navbarsExample08"
+                >
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">
+                        Home{" "}
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        About
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
           {/* <button
             className="navbar-toggler hamburger-button"
             type="button"
@@ -289,47 +316,7 @@ const Homepage = () => {
           </a>
         </div>
       </div>
-      <div className="row features-row">
-        <div className="col align-self-center h-75">
-          <div
-            className="card justify-content-center"
-            style={{ width: "17rem", margin: "0 auto" }}
-          >
-            <img src={jle14} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col align-self-center h-100">
-          <div className="card" style={{ width: "17rem", margin: "0 auto" }}>
-            <img src={jle14} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col align-self-center h-75">
-          <div className="card" style={{ width: "17rem", margin: "0 auto" }}>
-            <img src={jle14} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div
         id="carouselExampleControls"
         class="carousel slide features-row2"
@@ -391,36 +378,21 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="newsletter">
-        <div className="newsletterRight">
-          <img src={jle11} style={{ width: "10rem", height: "10rem" }}></img>
-        </div>
-        <div className="newsletterLeft">
-          <h1>Subscribe</h1>
-          <h5>We'll keep you in the know</h5>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter E-mail"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-      </div>
-      <div className="my-about-us">
-        <div className="about-content">
-          <h1>About-Us</h1>
-          <p>
-            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
-            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
-            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
-            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
-            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
-            thvjbn,mvgftyg kvoierhg nfneriogfijep9 rfher8gu9igpoim
-          </p>
-        </div>
-        <div className="about-img">
-          <img src={jle12} />
+      {/* ====================== Slider ================= */}
+      <div className="main-section">
+        <div class="img-section">
+          <div class="img">
+            <img src={bodyImg1} alt="img-1" />
+          </div>
+          <div class="img">
+            <img src={bodyImg2} alt="img-1" />
+          </div>
+          <div class="img">
+            <img src={bodyImg3} alt="img-1" />
+          </div>
+          <div class="img">
+            <img src={bodyImg4} alt="img-1" />
+          </div>
         </div>
       </div>
       {/* <section
@@ -480,71 +452,89 @@ const Homepage = () => {
       >
         <div className="container pt-3">
           <div className="row">
-            <div className="col-lg-6 mb-6 mb-lg-0 align-self-center">
-              <span>
-                <h1 style={{ color: "#a9f75c" }}>
-                  <span>JLE </span>Megamart
-                </h1>
-                <p
-                  style={{
-                    color: "white",
-                    fontSize: "1.4rem",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  Chalsa, Dist. Jalpaiguri
-                  <br />
-                  755206, West Bengal
-                </p>
-              </span>
-              <span>
-                <a href="https://www.instagram.com/gravitybites/?hl=en">
-                  <img
-                    src={instagram}
+            <div className="col-lg-6 mb-6 mb-lg-0 align-self-center ">
+              <div
+                className="media-center"
+                style={{ flexDirection: "column", alignItems: "center" }}
+              >
+                <div>
+                  <h1 className="custome-size1" style={{ color: "#a9f75c" }}>
+                    <span>JLE </span>Megamart
+                  </h1>
+                </div>
+                <div>
+                  <p
                     style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
+                      color: "white",
+                      fontSize: "1.4rem",
+                      fontFamily: "sans-serif",
                     }}
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src={youtube}
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
-                    }}
-                  />
-                </a>
-                <a href="https://www.facebook.com/Gravitybites/?ref=pages_you_manage">
-                  <img
-                    src={facebook}
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
-                    }}
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src={twitter}
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      marginRight: "1rem",
-                    }}
-                  />
-                </a>
-                <a href="https://www.linkedin.com/company/gravity-bites-gb/">
-                  <img
-                    src={linkedin}
-                    style={{ width: "1rem", height: "1rem" }}
-                  />
-                </a>
-              </span>
+                    className="custome-size2"
+                  >
+                    Chalsa, Dist. Jalpaiguri
+                    <br />
+                    755206, West Bengal
+                  </p>
+                </div>
+              </div>
+              <div className="media-center" style={{ display: "flex" }}>
+                <div>
+                  <a href="https://www.instagram.com/gravitybites/?hl=en">
+                    <img
+                      src={instagram}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img
+                      src={youtube}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.facebook.com/Gravitybites/?ref=pages_you_manage">
+                    <img
+                      src={facebook}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <img
+                      src={twitter}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        marginRight: "1rem",
+                      }}
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.linkedin.com/company/gravity-bites-gb/">
+                    <img
+                      src={linkedin}
+                      style={{ width: "1rem", height: "1rem" }}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <hr className="divider divider-fade divider-dark my-4" />
@@ -595,9 +585,13 @@ const Homepage = () => {
                     Refund
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li
+                  className="nav-item "
+                  style={{ width: "88px", padding: "10px 0" }}
+                >
                   <Link
                     className="nav-link"
+                    id="about-link"
                     to="/about-us"
                     style={{ color: "#7ac81e" }}
                   >

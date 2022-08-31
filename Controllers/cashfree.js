@@ -165,7 +165,7 @@ const generateOrderToken = asyncHandler(async (req, res) => {
       };
       let orderId = uuidv4();
 
-      console.log(user.phone);
+      console.log(parseFloat(req.body.amount).toFixed(2));
 
       let body = {
         order_id: orderId,
@@ -175,7 +175,7 @@ const generateOrderToken = asyncHandler(async (req, res) => {
         customer_details: {
           customer_id: userid.id,
           customer_email: "jlemegamart@gmail.com",
-          customer_phone: "+917431979503",
+          customer_phone: user.phone ? user.phone : "7431979503",
         },
       };
 

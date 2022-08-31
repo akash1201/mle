@@ -23,7 +23,6 @@ const GenerateRpin = () => {
   const [cf_order, setCf_order] = useState("");
   const [paylink, setPaylink] = useState("");
 
-
   const [toggle, setToggle] = useState(window.innerWidth > 767);
 
   useEffect(() => {
@@ -133,8 +132,6 @@ const GenerateRpin = () => {
     setLoading(false);
   };
 
-
-  
   return (
     <>
       {toggle ? userInfo && <Sider /> : ""}

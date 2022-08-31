@@ -6,13 +6,17 @@ import { getMyDownLines } from "../ApiCalls/UserAuth";
 import { Table, Switch, Space } from "antd";
 import TopAnalysisData from "../components/TopAnalysisData";
 import SideAnalysisData from "../components/SideAnalysisData";
+import {useLocation } from "react-router-dom";
+import MainDashboardData from "../components/MainDashboardData";
 
 const MyDashboard = () => {
+
+  let location = useLocation();
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const [tableData, setTableData] = useState(() => []);
   const [loading, setLoading] = useState(() => true);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -54,13 +58,28 @@ const MyDashboard = () => {
       key: "address",
     },
   ];
+
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
+
+  
+
   return (
     <>
       {toggle ? userInfo && <Sider /> : ""}
 
       <div className="all-content-wrapper">
         <Header handleToggle={handleToggle} />
-        <TopAnalysisData />
+        {
+          location.pathname=='/main-dashboard' && <MainDashboardData />
+        }
+        {
+          location.pathname=='/my-dashboard' && <TopAnalysisData />
+        }
         <div className="product-sales-area mg-tb-30">
           <div className="container-fluid">
             <div className="row">

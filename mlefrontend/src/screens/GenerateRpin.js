@@ -19,10 +19,18 @@ const GenerateRpin = () => {
   const [rpin, setRpin] = useState(() => "");
   const [show, setShow] = useState(() => false);
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  const [toggle, setToggle] = useState(true);
   const [ordertoken, setOrdertoken] = useState("");
   const [cf_order, setCf_order] = useState("");
   const [paylink, setPaylink] = useState("");
+
+
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -125,6 +133,8 @@ const GenerateRpin = () => {
     setLoading(false);
   };
 
+
+  
   return (
     <>
       {toggle ? userInfo && <Sider /> : ""}

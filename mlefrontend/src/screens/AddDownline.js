@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sider from "../components/Sider";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import SideAnalysisData from "../components/SideAnalysisData";
 import TopAnalysisData from "../components/TopAnalysisData";
 import { getAllRpins, registerUser } from "../ApiCalls/UserAuth";
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Loading from "../components/Loading";
 
 const AddDownline = () => {
@@ -30,7 +29,13 @@ const AddDownline = () => {
   const [error, setError] = useState(() => "");
   const [success, setSuccess] = useState(() => false);
   const [loading, setLoading] = useState(() => false);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -39,7 +44,7 @@ const AddDownline = () => {
   useState(() => {
     getAllRpins()
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           console.log(res.data.rpins);
           setRpins(res.data.rpins);
         }
@@ -96,7 +101,7 @@ const AddDownline = () => {
       errorAndClear("Enter IFSC");
       return;
     }
-    if (password != cpassword) {
+    if (password !== cpassword) {
       errorAndClear("Password do not match!");
       return;
     }
@@ -122,7 +127,7 @@ const AddDownline = () => {
     registerUser(data)
       .then((e) => {
         console.log(e);
-        let data = rpins.filter((e) => e.rpin != rpin);
+        let data = rpins.filter((e) => e.rpin !== rpin);
         setRpins(data);
         setName("");
         setPhoneNo("");
@@ -152,6 +157,7 @@ const AddDownline = () => {
       });
   };
 
+ 
   return (
     <>
       {toggle ? userInfo && <Sider /> : ""}
@@ -368,7 +374,7 @@ const AddDownline = () => {
                                 <option style={{ color: "black" }} value={""}>
                                   {"----Select----"}
                                 </option>
-                                {rpins.length != 0 ? (
+                                {rpins.length !== 0 ? (
                                   rpins.map((e) => (
                                     <option
                                       style={{ color: "black" }}

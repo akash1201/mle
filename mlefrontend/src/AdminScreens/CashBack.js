@@ -14,7 +14,14 @@ const CashBack = () => {
 
   const [incomes, setIncomes] = useState(() => []);
   const [membershipBenefits, setMembershipBenefits] = useState(() => []);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(window.innerWidth > 767);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setToggle(window.innerWidth > 767);
+    });
+  }, []);
+
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -32,6 +39,8 @@ const CashBack = () => {
     }
   };
 
+
+  
   return (
     <>
       {toggle ? <Sider /> : ""}

@@ -5,8 +5,8 @@ import axios from "axios";
 import base64 from "base-64";
 import jwt from "jsonwebtoken";
 import env from "dotenv";
-import {v4 as uuidv4} from 'uuid';
-import fetch from 'node-fetch';
+import { v4 as uuidv4 } from "uuid";
+import fetch from "node-fetch";
 env.config();
 
 const fetchDetail = asyncHandler(async (req, res) => {
@@ -48,7 +48,7 @@ const fetchDetail = asyncHandler(async (req, res) => {
         console.error(error);
       });
   } catch (error) {
-     console.log(error);
+    console.log(error);
     res.status(500).json({ error });
   }
 });
@@ -152,48 +152,47 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 const generateOrderToken = asyncHandler(async (req, res) => {
-  try{
-
+  try {
     let token = req.headers.authorization.split(" ")[1];
     let userid = jwt.verify(token, process.env.JWT_SECRET);
     let user = await User.findById(userid.id);
-    if(user){
-
+    if (user) {
       let config = {
-        'Content-Type': 'application/json',
-        'x-api-version': '2022-01-01',
-        'x-client-id' : process.env.CASHFREE_APP_ID,
-        'x-client-secret' : process.env.CASHFREE_SECRET
-      }
+        "Content-Type": "application/json",
+        "x-api-version": "2022-01-01",
+        "x-client-id": process.env.CASHFREE_APP_ID,
+        "x-client-secret": process.env.CASHFREE_SECRET,
+      };
       let orderId = uuidv4();
 
-      console.log(parseFloat(req.body.amount).toFixed(2));
+      console.log(user.phone);
 
       let body = {
-        "order_id": orderId,
-        "order_amount": parseFloat(req.body.amount).toFixed(2),
-        "order_currency": "INR",
-        "order_note": "R-Pin Payment",
-        "customer_details": {
-          "customer_id": userid.id,
-          "customer_email": "jlemegamart@gmail.com",
-          "customer_phone": user.phone? user.phone : '7431979503'
-        }
-      }
+        order_id: orderId,
+        order_amount: parseFloat(req.body.amount).toFixed(2),
+        order_currency: "INR",
+        order_note: "R-Pin Payment",
+        customer_details: {
+          customer_id: userid.id,
+          customer_email: "jlemegamart@gmail.com",
+          customer_phone: "+917431979503",
+        },
+      };
 
-      let response = await fetch(`${process.env.URL}/pg/orders`,{method :'POST',headers : config, body : JSON.stringify(body)});
+      let response = await fetch(`${process.env.URL}/pg/orders`, {
+        method: "POST",
+        headers: config,
+        body: JSON.stringify(body),
+      });
       let data = await response.json();
       console.log(data);
 
-      res.json({orderId : orderId, token : data.order_token});
-
-
-    }else{
-      res.status(400).json({message : 'User Not Found'})
+      res.json({ orderId: orderId, token: data.order_token });
+    } else {
+      res.status(400).json({ message: "User Not Found" });
     }
-
-  }catch(err){
-     console.log(err);
+  } catch (err) {
+    console.log(err);
   }
 });
 

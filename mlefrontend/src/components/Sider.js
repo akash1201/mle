@@ -185,7 +185,7 @@ const Sider = () => {
                 <li>
                   <a href="#" onClick={signout}>
                     <i className="fas fa-sign-out-alt"></i>{" "}
-                    <span className="mini-click-non">`Sign Out</span>
+                    <span className="mini-click-non">Sign Out</span>
                   </a>
                 </li>
               </ul>

@@ -68,7 +68,7 @@ const registerUser = asyncHandler(async (req, res) => {
         bank: bankDetail,
         phone: obj.phone,
         name: obj.name,
-        id: obj.userId,
+        id: obj._id,
         settlementCycleId: 2,
       },
     };

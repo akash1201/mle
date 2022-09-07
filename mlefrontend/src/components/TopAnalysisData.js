@@ -3,6 +3,7 @@ import axios from "axios";
 
 const TopAnalysisData = () => {
   const [data, setData] = useState(null);
+  const [finances, setFinances] = useState(null);
 
   useEffect(() => {
     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -22,6 +23,17 @@ const TopAnalysisData = () => {
         .catch((err) => {
           console.log(err);
         });
+
+      axios
+        .get(`/api/users/finances`, config)
+        .then((res) => {
+          console.log(res);
+          // setData(res.data);
+          setFinances(res.data.data.vendorDetails);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, []);
 
@@ -37,7 +49,10 @@ const TopAnalysisData = () => {
               <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12">
                 <div
                   className="admin-content analysis-progrebar-ctn res-mg-t-15"
-                  style={{ background: "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)"  }}
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)",
+                  }}
                 >
                   <h4 className="text-left text-uppercase">
                     <b>Total Earnings</b>
@@ -48,7 +63,7 @@ const TopAnalysisData = () => {
                     </div>
                     <div className="col-xs-9 cus-gh-hd-pro">
                       <h2 className="text-right no-margin">
-                        {data ? data.totalEarning : 0}
+                        {finances ? finances?.balance : 0}
                       </h2>
                     </div>
                   </div>
@@ -63,10 +78,13 @@ const TopAnalysisData = () => {
               <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12">
                 <div
                   className="admin-content analysis-progrebar-ctn res-mg-t-15"
-                  style={{ background: "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)"  }}
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)",
+                  }}
                 >
                   <h4 className="text-left text-uppercase">
-                    <b>This Month</b>
+                    <b>Next Settlement</b>
                   </h4>
                   <div className="row vertical-center-box vertical-center-box-tablet">
                     <div className="col-xs-3 mar-bot-15 text-left">
@@ -74,7 +92,9 @@ const TopAnalysisData = () => {
                     </div>
                     <div className="col-xs-9 cus-gh-hd-pro">
                       <h2 className="text-right no-margin">
-                        {data ? data.totalEarning : 0}
+                        {finances
+                          ? finances.nextSettlementDetails?.settlementAmount
+                          : 0}
                       </h2>
                     </div>
                   </div>
@@ -86,17 +106,19 @@ const TopAnalysisData = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+              {/* <div className="col-lg-4 col-md-3 col-sm-3 col-xs-12">
                 <div
                   className="admin-content analysis-progrebar-ctn res-mg-t-15"
-                  style={{ background: "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)"  }}
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)",
+                  }}
                 >
                   <h4 className="text-left text-uppercase">
                     <b>Today Earnings</b>
                   </h4>
                   <div className="row vertical-center-box vertical-center-box-tablet">
                     <div className="col-xs-3 mar-bot-15 text-left">
-                      {/* <label className="label bg-green">30% <i className="fa fa-level-up" aria-hidden="true"></i></label> */}
                     </div>
                     <div className="col-xs-9 cus-gh-hd-pro">
                       <h2 className="text-right no-margin">
@@ -111,7 +133,7 @@ const TopAnalysisData = () => {
                     ></div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="row">
               <div
@@ -120,7 +142,10 @@ const TopAnalysisData = () => {
               >
                 <div
                   className="admin-content analysis-progrebar-ctn res-mg-t-30"
-                  style={{ background: "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)"  }}
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)",
+                  }}
                 >
                   <h4 className="text-left text-uppercase">
                     <b>Direct Downline(s)</b>
@@ -149,7 +174,10 @@ const TopAnalysisData = () => {
               >
                 <div
                   className="admin-content analysis-progrebar-ctn res-mg-t-30"
-                  style={{ background: "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)"  }}
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(174,199,238,1) 0%, rgba(148,151,233,1) 100%)",
+                  }}
                 >
                   <h4 className="text-left text-uppercase">
                     <b>Total Downlines</b>

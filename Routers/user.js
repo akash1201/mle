@@ -15,6 +15,7 @@ import {
   updateUserInfo,
   rpinGenerate,
   registerVendors,
+  getFinances,
 } from "../Controllers/user.js";
 import { protect, admin, vendor } from "../middleware/authMiddleware.js";
 
@@ -37,5 +38,7 @@ router.get(`/get-users-count`, protect, getUserCount);
 
 router.post(`/rpin`, protect, rpinGenerate);
 router.post(`/link-cashfree/:pageNo?`, registerVendors);
+
+router.get(`/finances`, protect, getFinances);
 
 export default router;

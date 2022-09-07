@@ -180,7 +180,7 @@ const GenerateRpin = () => {
 
                         {!rpin && (
                           <>
-                            <div style={{ marginBottom: "2%" }}>
+                            {/* <div style={{ marginBottom: "2%" }}>
                               <button
                                 onClick={(e) => {
                                   e.preventDefault();
@@ -203,7 +203,7 @@ const GenerateRpin = () => {
                               >
                                 Pay Rs. 1650 and Generate
                               </button>
-                            </div>
+                            </div> */}
                             <div>
                               <button
                                 onClick={(e) => {

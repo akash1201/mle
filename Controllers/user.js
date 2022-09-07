@@ -68,7 +68,7 @@ const registerUser = asyncHandler(async (req, res) => {
         bank: bankDetail,
         phone: obj.phone,
         name: obj.name,
-        id: obj._id,
+        id: user._id,
         settlementCycleId: 2,
       },
     };
@@ -402,19 +402,29 @@ const rpinGenerate = asyncHandler(async (req, res) => {
 
     let arr = [];
     let user = await User.findById(userid.id);
+
+    arr = [
+      ...arr,
+      {
+        vendorId: user._id,
+        amount: 225,
+        percentage: null,
+      },
+    ];
     let parentId = user.parentId;
-    for (let i = 0; i < 7; ++i) {
+    for (let i = 0; i < 6; ++i) {
       let obj = {};
       if (parentId != "parent") {
         let parent = await User.findById(parentId);
         parentId = parent.parentId;
         if (parent.userType != "admin") {
           let amount = 45;
-          if (i == 0) {
-            amount = 225;
-          } else if (i == 1 || i == 2) {
+          // if (i == 0) {
+          //   amount = 225;
+          // } else
+          if (i == 1 || i == 0) {
             amount = 180;
-          } else if ((i = 3)) {
+          } else if ((i = 2)) {
             amount = 90;
           }
 
@@ -423,7 +433,6 @@ const rpinGenerate = asyncHandler(async (req, res) => {
             amount: amount,
             percentage: null,
           };
-          console.log(obj);
           arr = [...arr, obj];
         }
       }
@@ -499,6 +508,29 @@ const registerVendors = asyncHandler(async (req, res) => {
   }
   res.json(arr);
 });
+
+const getFinances = asyncHandler(async (req, res) => {
+  try {
+    let config = {
+      "Content-Type": "application/json",
+      "x-client-id": process.env.CASHFREE_APP_ID,
+      "x-client-secret": process.env.CASHFREE_SECRET,
+    };
+    let token = req.headers.authorization.split(" ")[1];
+    let userid = jwt.verify(token, process.env.JWT_SECRET);
+    let response = await fetch(
+      `${process.env.URL}/api/v2/easy-split/vendors/${userid.id}`,
+      {
+        method: "GET",
+        headers: config,
+      }
+    );
+    let data = await response.json();
+    res.json({ message: "success", data: data });
+  } catch (err) {
+    res.json({ message: err.message });
+  }
+});
 export {
   registerVendors,
   rpinGenerate,
@@ -515,4 +547,5 @@ export {
   getUserInfo,
   registerVendor,
   generateBill,
+  getFinances,
 };

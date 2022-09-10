@@ -84,7 +84,7 @@ const TopAnalysisData = () => {
                   }}
                 >
                   <h4 className="text-left text-uppercase">
-                    <b>Next Settlement</b>
+                    <b>Wallet</b>
                   </h4>
                   <div className="row vertical-center-box vertical-center-box-tablet">
                     <div className="col-xs-3 mar-bot-15 text-left">

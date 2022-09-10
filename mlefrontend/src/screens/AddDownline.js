@@ -157,7 +157,6 @@ const AddDownline = () => {
       });
   };
 
- 
   return (
     <>
       {toggle ? userInfo && <Sider /> : ""}
@@ -379,7 +378,7 @@ const AddDownline = () => {
                                     <option
                                       style={{ color: "black" }}
                                       value={e.rpin}
-                                    >{`${e.rpin} (Type ${e.type})`}</option>
+                                    >{`${e.rpin}`}</option>
                                   ))
                                 ) : (
                                   <></>

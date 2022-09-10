@@ -437,6 +437,7 @@ const rpinGenerate = asyncHandler(async (req, res) => {
         }
       }
     }
+    console.log(arr);
     if (arr.length != 0) {
       let config = {
         "Content-Type": "application/json",
@@ -456,6 +457,7 @@ const rpinGenerate = asyncHandler(async (req, res) => {
           body: JSON.stringify(body),
         }
       );
+      console.log("response--->", response);
       res.json(pin);
     } else {
       res.json(pin);
@@ -502,6 +504,7 @@ const registerVendors = asyncHandler(async (req, res) => {
           body: JSON.stringify(data),
         }
       );
+      console.log("response---->", response);
       let data1 = await response.json();
       arr = [...arr, data1];
     }

@@ -6,11 +6,10 @@ import { getMyDownLines } from "../ApiCalls/UserAuth";
 import { Table, Switch, Space } from "antd";
 import TopAnalysisData from "../components/TopAnalysisData";
 import SideAnalysisData from "../components/SideAnalysisData";
-import {useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import MainDashboardData from "../components/MainDashboardData";
 
 const MyDashboard = () => {
-
   let location = useLocation();
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -59,14 +58,11 @@ const MyDashboard = () => {
     },
   ];
 
-
   useEffect(() => {
     window.addEventListener("resize", () => {
       setToggle(window.innerWidth > 767);
     });
   }, []);
-
-  
 
   return (
     <>
@@ -74,12 +70,10 @@ const MyDashboard = () => {
 
       <div className="all-content-wrapper">
         <Header handleToggle={handleToggle} />
-        {
+        {/* {
           location.pathname=='/main-dashboard' && <MainDashboardData />
-        }
-        {
-          location.pathname=='/my-dashboard' && <TopAnalysisData />
-        }
+        } */}
+        {<TopAnalysisData />}
         <div className="product-sales-area mg-tb-30">
           <div className="container-fluid">
             <div className="row">

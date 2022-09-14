@@ -16,6 +16,7 @@ import {
   rpinGenerate,
   registerVendors,
   getFinances,
+  postData,
 } from "../Controllers/user.js";
 import { protect, admin, vendor } from "../middleware/authMiddleware.js";
 
@@ -40,5 +41,6 @@ router.post(`/rpin`, protect, rpinGenerate);
 router.post(`/link-cashfree/:pageNo?`, registerVendors);
 
 router.get(`/finances`, protect, getFinances);
+// router.post(`/post-data`, postData);
 
 export default router;

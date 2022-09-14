@@ -10,6 +10,7 @@ import base64 from "base-64";
 import axios from "axios";
 import env from "dotenv";
 import fetch from "node-fetch";
+import Earning from "../Models/Earnings.js";
 
 const registerUser = asyncHandler(async (req, res) => {
   let max = await User.aggregate([
@@ -419,9 +420,6 @@ const rpinGenerate = asyncHandler(async (req, res) => {
         parentId = parent.parentId;
         if (parent.userType != "admin") {
           let amount = 45;
-          // if (i == 0) {
-          //   amount = 225;
-          // } else
           if (i == 1 || i == 0) {
             amount = 180;
           } else if ((i = 2)) {
@@ -457,7 +455,7 @@ const rpinGenerate = asyncHandler(async (req, res) => {
           body: JSON.stringify(body),
         }
       );
-      console.log("response--->", response);
+      await Earning.insertMany(arr);
       res.json(pin);
     } else {
       res.json(pin);
@@ -521,6 +519,14 @@ const getFinances = asyncHandler(async (req, res) => {
     };
     let token = req.headers.authorization.split(" ")[1];
     let userid = jwt.verify(token, process.env.JWT_SECRET);
+    console.log("typeof ", userid.id);
+    let resp = await Earning.aggregate([
+      { $match: { vendorId: userid.id } },
+      { $group: { _id: null, sum: { $sum: "$amount" } } },
+    ]);
+    let amount = resp.length != 0 ? resp[0].sum : 0;
+    // res.json(resp);
+    // return;
     let response = await fetch(
       `${process.env.URL}/api/v2/easy-split/vendors/${userid.id}`,
       {
@@ -529,12 +535,19 @@ const getFinances = asyncHandler(async (req, res) => {
       }
     );
     let data = await response.json();
+    data.vendorDetails["totalEarnings"] = amount;
     res.json({ message: "success", data: data });
   } catch (err) {
     res.json({ message: err.message });
   }
 });
+
+const postData = asyncHandler(async (req, res) => {
+  let response = await Earning.insertMany(req.body);
+  res.json(response);
+});
 export {
+  postData,
   registerVendors,
   rpinGenerate,
   getUserCount,

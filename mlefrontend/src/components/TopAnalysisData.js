@@ -63,7 +63,7 @@ const TopAnalysisData = () => {
                     </div>
                     <div className="col-xs-9 cus-gh-hd-pro">
                       <h2 className="text-right no-margin">
-                        {finances ? finances?.balance : 0}
+                        {finances ? finances?.totalEarnings : 0}
                       </h2>
                     </div>
                   </div>
@@ -92,9 +92,10 @@ const TopAnalysisData = () => {
                     </div>
                     <div className="col-xs-9 cus-gh-hd-pro">
                       <h2 className="text-right no-margin">
-                        {finances
+                        {finances ? finances?.balance : 0}
+                        {/* {finances
                           ? finances.nextSettlementDetails?.settlementAmount
-                          : 0}
+                          : 0} */}
                       </h2>
                     </div>
                   </div>
